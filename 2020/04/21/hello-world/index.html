@@ -52,7 +52,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>oyeah</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>oyeah's workspace</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -185,29 +185,29 @@
             
             <article class="markdown-body">
               <p>2020/4/21,我记录了博客搭建的全过程。就以今天开始，多尝试，找到自己擅长的领域，高效学习，发现自己身上隐藏的能量，有所爱，有所期待。</p>
+<p>[TOC]</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="为什么要搭建自己的博客"><a href="#为什么要搭建自己的博客" class="headerlink" title="为什么要搭建自己的博客"></a>为什么要搭建自己的博客</h3><p>​      🔺 自己的博客就是自己的标签</p>
 <p>​      🔺 自己的博文就是自己的思想成果</p>
 <p>​      🔺 利用自己的博客打造自己的网上名片</p>
 <p>​      🔺  独立的博客网站是记录人生的工具</p>
 <p>​      🔺  博客是专属于自己写作、记录、呈现的一片耕地</p>
-<p>​      🔺  自行建站一切都可自己定制</p>
+<p>​      🔺  自行建站一切都可以自己定制</p>
 <p>​      🔺   自行建站可以寻找志同道合的朋友做友链</p>
 <p>More info: <a href="http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/" target="_blank" rel="noopener">刘未鹏 | Mind Hacks</a></p>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>​      🔺 安装 Node.js: <a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
 <p>​      🔺 安装 Git: <a href="https://github.com/waylau/git-for-win" target="_blank" rel="noopener">https://github.com/waylau/git-for-win</a></p>
 <p>​      🔺 注册 <code>Github</code>账号: <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
-<h3 id="Github-配置"><a href="#Github-配置" class="headerlink" title="Github 配置"></a>Github 配置</h3><p>​        🔺 登录<code>Github</code> 账号: <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
+<h3 id="Github-配置"><a href="#Github-配置" class="headerlink" title="Github 配置"></a>Github 配置</h3><p>​     🔺 登录<code>Github</code> 账号: <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
 <p>​        🔺 创建仓库，点击右上角的<code>Create a new repository</code>:<a href="https://github.com/new" target="_blank" rel="noopener">https://github.com/new</a></p>
-<p>​            🔸 新建一个名为<code>你的用户名.github.io</code>的仓库，比如说，如果你的github用户名是oyeah，那么你就新建oyeah.github.io`的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 <a href="http://oyeah.github.io了" target="_blank" rel="noopener">http://oyeah.github.io了</a></p>
+<p>​            🔸 新建一个名为<code>你的用户名.github.io</code>的仓库，比如说，如果我的github用户名是oyeah-hua，那么你就新建oyeah-hua.github.io`的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 <a href="http://oyeah-hua.github.io了" target="_blank" rel="noopener">http://oyeah-hua.github.io了</a></p>
 <p>​           🔸 仓库创建完成后，开始生成添加秘钥 SSH Key</p>
 <p>​                在终端 (Windows:cmd) 下输入：</p>
-<pre><code class="hljs plain">ssh-keygen -t rsa -C &quot;Github的注册邮箱地址&quot;</code></pre>
+<pre><code class="hljs bash">$ ssh-keygen -t rsa -C <span class="hljs-string">"Github的注册邮箱地址"</span></code></pre>
 <p>​              一直Enter下来就可以，待秘钥生成完毕，会得到两   个文件<code>id_rsa</code>和<code>id_rsa.pub</code>，用文本编辑器打开<code>id_rsa.pub</code>，<code>Ctrl + A</code>复制里面的所有内容，然后进入<br><a href="https://github.com/settings/ssh" target="_blank" rel="noopener">https://github.com/settings/ssh</a> 把复制内容添加在这里</p>
 <p>​        🔺 测试是否添加成功。在命令行（即Git Bash）依次输入以下命令</p>
 <pre><code class="hljs bash">$ ssh -T git@github.com</code></pre>
 <p>如果出现提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入yes，然后会看到返回<code>You&#39;ve successfully authenticated</code>即成功。</p>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><h2 id="hexo简介"><a href="#hexo简介" class="headerlink" title="hexo简介"></a>hexo简介</h2><h3 id="hexo是什么"><a href="#hexo是什么" class="headerlink" title="hexo是什么"></a>hexo是什么</h3><p>​      🔺 Hexo是一个简单、快速、强大的基于 Github Pages     的博客框架，支持Markdown格式，有众多优秀插件和主题。</p>
+<h2 id="hexo简介"><a href="#hexo简介" class="headerlink" title="hexo简介"></a>hexo简介</h2><h3 id="hexo是什么"><a href="#hexo是什么" class="headerlink" title="hexo是什么"></a>hexo是什么</h3><p>​      🔺 Hexo是一个简单、快速、强大的基于 Github Pages     的博客框架，支持Markdown格式，有众多优秀插件和主题。</p>
 <p>​      🔺 github: <a href="https://link.jianshu.com/?t=https://github.com/hexojs/hexo" target="_blank" rel="noopener">https://github.com/hexojs/hexo</a></p>
 <p>​      🔺  Hexo中文官网： <a href="https://link.jianshu.com/?t=https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a></p>
 <p>​      🔺 Hexo官方使用文档：<a href="https://link.jianshu.com/?t=https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></p>
@@ -260,18 +260,27 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</code></p
 <p>​         🔺   在终端输入</p>
 <pre><code class="hljs bash">$ git <span class="hljs-built_in">clone</span> `对应主题的Github地址`</code></pre>
 <h3 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h3><p>​         🔺 打开根目录下<strong>站点配置文件</strong><code>_config.yml</code>， 找到 theme 字段，并将其值更改为 next</p>
-<p>​             </p>
 <pre><code class="hljs yml"><span class="hljs-comment"># Schemes</span>
 <span class="hljs-attr">scheme:</span> <span class="hljs-string">`你要修改的主题名称`</span></code></pre>
 <h3 id="验证主题"><a href="#验证主题" class="headerlink" title="验证主题"></a>验证主题</h3><p>​         🔺 在终端清除缓存</p>
 <pre><code class="hljs bash">$ hexo clean</code></pre>
 <p>​        🔺  在终端重新生成</p>
 <pre><code class="hljs bash">$ hexo generate</code></pre>
+<p>More info: <a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">小茗同学 | 网站建设 </a></p>
 
             </article>
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Hexo/">Hexo</a>
+                    
+                      <a class="hover-with-bg" href="/categories/Github/">Github</a>
+                    
+                  </div>
                 
                 
                   <div class="post-meta">
@@ -309,7 +318,7 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</code></p
                 
                 
   <script defer src="https://utteranc.es/client.js"
-          repo="oyeah-hua / commit-utterance"
+          repo="oyeah-hua/commit-utterance"
           issue-term="pathname"
   
           theme="github-light"
