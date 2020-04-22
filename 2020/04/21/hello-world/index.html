@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Hello World - Hexo</title>
+  <title>Hexo + Github 博客搭建 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -134,8 +134,8 @@
               
                 <div class="mt-3 post-meta">
                   <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-04-21 12:42">
-                    星期二, 四月 21日 2020, 12:42 下午
+                  <time datetime="2020-04-21 20:00">
+                    星期二, 四月 21日 2020, 8:00 晚上
                   </time>
                 </div>
               
@@ -145,7 +145,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    73 字
+                    1.1k 字
                   </span>
                 
 
@@ -155,7 +155,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    1
+                    13
                      分钟
                   </span>
                 
@@ -184,21 +184,106 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="hljs bash">$ hexo new <span class="hljs-string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="hljs bash">$ hexo server</code></pre>
+              <p>2020/4/21,我记录了博客搭建的全过程。就以今天开始，多尝试，找到自己擅长的领域，高效学习，发现自己身上隐藏的能量，有所爱，有所期待。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="为什么要搭建自己的博客"><a href="#为什么要搭建自己的博客" class="headerlink" title="为什么要搭建自己的博客"></a>为什么要搭建自己的博客</h3><p>​      🔺 自己的博客就是自己的标签</p>
+<p>​      🔺 自己的博文就是自己的思想成果</p>
+<p>​      🔺 利用自己的博客打造自己的网上名片</p>
+<p>​      🔺  独立的博客网站是记录人生的工具</p>
+<p>​      🔺  博客是专属于自己写作、记录、呈现的一片耕地</p>
+<p>​      🔺  自行建站一切都可自己定制</p>
+<p>​      🔺   自行建站可以寻找志同道合的朋友做友链</p>
+<p>More info: <a href="http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/" target="_blank" rel="noopener">刘未鹏 | Mind Hacks</a></p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>​      🔺 安装 Node.js: <a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
+<p>​      🔺 安装 Git: <a href="https://github.com/waylau/git-for-win" target="_blank" rel="noopener">https://github.com/waylau/git-for-win</a></p>
+<p>​      🔺 注册 <code>Github</code>账号: <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
+<h3 id="Github-配置"><a href="#Github-配置" class="headerlink" title="Github 配置"></a>Github 配置</h3><p>​        🔺 登录<code>Github</code> 账号: <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
+<p>​        🔺 创建仓库，点击右上角的<code>Create a new repository</code>:<a href="https://github.com/new" target="_blank" rel="noopener">https://github.com/new</a></p>
+<p>​            🔸 新建一个名为<code>你的用户名.github.io</code>的仓库，比如说，如果你的github用户名是oyeah，那么你就新建oyeah.github.io`的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 <a href="http://oyeah.github.io了" target="_blank" rel="noopener">http://oyeah.github.io了</a></p>
+<p>​           🔸 仓库创建完成后，开始生成添加秘钥 SSH Key</p>
+<p>​                在终端 (Windows:cmd) 下输入：</p>
+<pre><code class="hljs plain">ssh-keygen -t rsa -C &quot;Github的注册邮箱地址&quot;</code></pre>
+<p>​              一直Enter下来就可以，待秘钥生成完毕，会得到两   个文件<code>id_rsa</code>和<code>id_rsa.pub</code>，用文本编辑器打开<code>id_rsa.pub</code>，<code>Ctrl + A</code>复制里面的所有内容，然后进入<br><a href="https://github.com/settings/ssh" target="_blank" rel="noopener">https://github.com/settings/ssh</a> 把复制内容添加在这里</p>
+<p>​        🔺 测试是否添加成功。在命令行（即Git Bash）依次输入以下命令</p>
+<pre><code class="hljs bash">$ ssh -T git@github.com</code></pre>
+<p>如果出现提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入yes，然后会看到返回<code>You&#39;ve successfully authenticated</code>即成功。</p>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="hljs bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="hljs bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><h2 id="hexo简介"><a href="#hexo简介" class="headerlink" title="hexo简介"></a>hexo简介</h2><h3 id="hexo是什么"><a href="#hexo是什么" class="headerlink" title="hexo是什么"></a>hexo是什么</h3><p>​      🔺 Hexo是一个简单、快速、强大的基于 Github Pages     的博客框架，支持Markdown格式，有众多优秀插件和主题。</p>
+<p>​      🔺 github: <a href="https://link.jianshu.com/?t=https://github.com/hexojs/hexo" target="_blank" rel="noopener">https://github.com/hexojs/hexo</a></p>
+<p>​      🔺  Hexo中文官网： <a href="https://link.jianshu.com/?t=https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a></p>
+<p>​      🔺 Hexo官方使用文档：<a href="https://link.jianshu.com/?t=https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></p>
+<h3 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h3><p>​     🔺 hexo 安装</p>
+<p>​    在git bush输入以下命令：</p>
+<pre><code class="hljs bash">$ npm install -g hexo</code></pre>
+<p>​     🔺  hexo 初始化</p>
+<p>​     在电脑的某个盘新建一个名为<code>hexo</code>的文件夹（名字可以随便取），比如我的是<code>D:\Workspaces\hexo</code>，由于这个文件夹将来就作为你存放代码的地方，请你最好不要随便放。</p>
+<pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> /d/Workspaces/hexo/
+$ hexo init</code></pre>
+<p>   hexo会自动下载一些文件到这个目录，包括node_modules，目录结构如下图：</p>
+<pre><code class="hljs plain">.
+├── _config.yml
+├── package.json
+├── scaffolds
+├── source
+|   ├── _drafts
+|   └── _posts
+└── themes
+·</code></pre>
+<p>  🔺  hexo 命令</p>
+<pre><code class="hljs bash">$ hexo generate
+<span class="hljs-comment"># 启动本地服务器</span>
+$ hexo server
+<span class="hljs-comment"># 在浏览器输入 http://localhost:4000/就可以看见网页和模板了</span>
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</code></pre>
+<p>🔺 直接使用<code>hexo deploy</code>部署到 Github，将出现如下错误：</p>
+<pre><code class="hljs bash">ERROR Deployer not found:git</code></pre>
+<p>​      🔔  这时候要使用下面的命令安装对应的插件</p>
+<pre><code class="hljs bash">$ npm install hexo-deployer-git --save</code></pre>
+<p>​      🔔   安装完成即可部署到Github</p>
+<h2 id="配置博客"><a href="#配置博客" class="headerlink" title="配置博客"></a>配置博客</h2><h3 id="配置站点"><a href="#配置站点" class="headerlink" title="配置站点"></a>配置站点</h3><p>​         🔺 打开根目录下<strong>站点配置文件</strong><code>_config.yml</code>（比如我的是<code>D:\Workspaces\hexo\_config.yml</code>），配置有关deploy的部分：</p>
+<pre><code class="hljs yml"><span class="hljs-attr">deploy:</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span>
+  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/oyeah/oyeah.github.io</span>
+  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span></code></pre>
+<p>​      🔔  修改的时候一定要注意<code>:</code>后面一定要有一个空格，否则会报错</p>
+<p>​      🔔   <strong>repo</strong> 为<code>你的用户名.github.io</code>的仓库地址</p>
+<h3 id="修改网站相关信息"><a href="#修改网站相关信息" class="headerlink" title="修改网站相关信息"></a>修改网站相关信息</h3><p>​    🔺 打开根目录下<strong>站点配置文件</strong><code>_config.yml</code>（比如我的是<code>D:\Workspaces\hexo\_config.yml</code>），修改网站信息</p>
+<p>​      🔔  修改的时候一定要注意<code>:</code>后面一定要有一个空格，否则会报错</p>
+<pre><code class="hljs yml"><span class="hljs-attr">title:</span> <span class="hljs-string">标题</span>
+<span class="hljs-attr">subtitle:</span> <span class="hljs-string">副标题</span>
+<span class="hljs-attr">description:</span> <span class="hljs-string">网页描述</span>
+<span class="hljs-attr">author:</span> <span class="hljs-string">作者</span>
+<span class="hljs-attr">language:</span> <span class="hljs-string">语言</span></code></pre>
+<p>​    </p>
+<h2 id="主题修改"><a href="#主题修改" class="headerlink" title="主题修改"></a>主题修改</h2><h3 id="选择合适的主题"><a href="#选择合适的主题" class="headerlink" title="选择合适的主题"></a>选择合适的主题</h3><p>​         🔺 官方主题：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
+<h3 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h3><p>​         🔺  点击合适的主题，将Github clone 地址复制</p>
+<p>​         🔺   在终端输入</p>
+<pre><code class="hljs bash">$ git <span class="hljs-built_in">clone</span> `对应主题的Github地址`</code></pre>
+<h3 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h3><p>​         🔺 打开根目录下<strong>站点配置文件</strong><code>_config.yml</code>， 找到 theme 字段，并将其值更改为 next</p>
+<p>​             </p>
+<pre><code class="hljs yml"><span class="hljs-comment"># Schemes</span>
+<span class="hljs-attr">scheme:</span> <span class="hljs-string">`你要修改的主题名称`</span></code></pre>
+<h3 id="验证主题"><a href="#验证主题" class="headerlink" title="验证主题"></a>验证主题</h3><p>​         🔺 在终端清除缓存</p>
+<pre><code class="hljs bash">$ hexo clean</code></pre>
+<p>​        🔺  在终端重新生成</p>
+<pre><code class="hljs bash">$ hexo generate</code></pre>
 
             </article>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Fluid/">Fluid</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Github/">Github</a>
+                    
+                  </div>
                 
               </div>
               
@@ -377,7 +462,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Hello World&nbsp;",
+        "Hexo + Github 博客搭建&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
