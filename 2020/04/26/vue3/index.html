@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Vue 笔记整理02 - oyeah</title>
+  <title>Vue 笔记整理03 - oyeah</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -134,8 +134,8 @@
               
                 <div class="mt-3 post-meta">
                   <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-04-25 19:35">
-                    星期六, 四月 25日 2020, 7:35 晚上
+                  <time datetime="2020-04-26 20:51">
+                    星期日, 四月 26日 2020, 8:51 晚上
                   </time>
                 </div>
               
@@ -145,7 +145,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.5k 字
+                    2.1k 字
                   </span>
                 
 
@@ -155,7 +155,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    22
+                    32
                      分钟
                   </span>
                 
@@ -184,172 +184,25 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="Vue-笔记整理02"><a href="#Vue-笔记整理02" class="headerlink" title="Vue 笔记整理02"></a>Vue 笔记整理02</h1><h3 id="二-插值语法"><a href="#二-插值语法" class="headerlink" title="二.插值语法"></a>二.插值语法</h3><h4 id="🚩mustache语法"><a href="#🚩mustache语法" class="headerlink" title="🚩mustache语法"></a>🚩mustache语法</h4><ul>
-<li><p>如何将data中的文本数据，插入到HTML中呢？</p>
+              <h1 id="Vue-笔记整理03"><a href="#Vue-笔记整理03" class="headerlink" title="Vue 笔记整理03"></a>Vue 笔记整理03</h1><p>🔺 前面我们学习的指令主要作用是将值插入到我们模板的内容当中。</p>
+<p>🔺 但是，除了内容需要动态来决定外，某些属性我们也希望动态来绑定。</p>
+<p>🔺 比如动态绑定a元素的<code>href</code>属性</p>
+<p>🔺 比如动态绑定<code>img</code>元素的<code>src</code>属性</p>
+<p>🔺 这个时候，我们可以使用<code>v-bind指令</code>：</p>
+<p>​    🔺  <strong>作用</strong>：动态绑定属性</p>
+<p>​    🔺  <strong>缩写</strong>：<code>:</code></p>
+<p>​    🔺  <strong>预期</strong>：<code>any (with argument) | Object (without argument)</code></p>
+<p>​    🔺  <strong>参数</strong>：<code>attrOrProp (optional)</code></p>
+<p>🔺 下面，我们就具体来学习v-bind的使用。</p>
+<h2 id="三-v-bind"><a href="#三-v-bind" class="headerlink" title="三. v-bind"></a>三. v-bind</h2><h3 id="3-1-v-bind绑定基本属性"><a href="#3-1-v-bind绑定基本属性" class="headerlink" title="3.1. v-bind绑定基本属性"></a>3.1. v-bind绑定基本属性</h3><h4 id="🚩-v-bind的基本使用"><a href="#🚩-v-bind的基本使用" class="headerlink" title="🚩 v-bind的基本使用"></a>🚩 <code>v-bind</code>的基本使用</h4><ul>
+<li><p>v-bind用于绑定一个或多个属性值，或者向另一个组件传递props值(这个学到组件时再介绍)</p>
 </li>
-<li><p>我们已经学习过了，可以通过Mustache语法(也就是双大括号)。</p>
+<li><p>在开发中，有哪些属性需要动态进行绑定呢？</p>
 </li>
-<li><p>mustach：胡子，胡须</p>
-</li>
-<li>我们可以像下面这样来使用，并且数据是响应式的</li>
-</ul>
-<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>mustache语法<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Hello &#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;message&#125;&#125;, Oyeah!<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-
-  <span class="hljs-comment">&lt;!--mustache语法中,不仅仅可以直接写变量,也可以写简单的表达式--&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;firstName + lastName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;firstName + ' ' + lastName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;counter * 2&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
-    data: &#123;
-<span class="actionscript">      message: <span class="hljs-string">'哈哈哈，oyeah'</span>,</span>
-<span class="actionscript">      firstName: <span class="hljs-string">'o'</span>,</span>
-<span class="actionscript">      lastName: <span class="hljs-string">'yeah'</span>,</span>
-      counter: 100
-    &#125;,
-  &#125;)
-
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
-<ul>
-<li><p>第10行：mustache 插入到标签中</p>
-</li>
-<li><p>第14行：mustache 可以为一个表达式</p>
-</li>
-<li><p>第16行： 使用了两个mustache </p>
-<p>🔺但是，在某些情况下，我们可能不希望界面随意的跟随改变，这个时候，我们就可以使用一个Vue的指令</p>
+<li><p>还是有很多的，比如图片的链接<code>src</code>、网站的链接<code>href</code>、动态绑定一些类、样式等</p>
+<p>🔺 其实，在 某些时候我们并不想将变量放在标签内容中，像这样<code>&lt;h2&gt;&lt;/h2&gt;</code>是将变量<code>h2</code>标签括起来，类似<code>js</code>的<code>innerHTML</code>。但是我们期望将变量<code>imgURL</code>写在如下位置，想这样<code>&lt;img src=&quot;imgURL&quot; alt=&quot;&quot;&gt;</code>导入图片是希望动态获取图片的链接，此时的<code>imgURL</code>并非变量而是字符串<code>imgURL</code>，如果要将其生效为变量，需要使用到一个标签<code>v-bind:</code>，像这样<code>&lt;img v-bind:src=&quot;imgURL&quot; alt=&quot;&quot;&gt;</code>，而且这里也不能使用Mustache语法，类似<code>&lt;img v-bind:src=&quot;&quot; alt=&quot;&quot;&gt;</code>，这也是错误的。</p>
 </li>
 </ul>
-<h4 id="🚩v-once"><a href="#🚩v-once" class="headerlink" title="🚩v-once"></a>🚩v-once</h4><ul>
-<li><p>该指令后面不需要跟任何表达式(比如之前的v-for后面是跟表达式的)</p>
-</li>
-<li><p>该指令表示元素和组件(组件后面才会学习)只渲染一次，不会随着数据的改变而改变。</p>
-</li>
-</ul>
-<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>v-once使用<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">v-once</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
-    data: &#123;
-<span class="actionscript">      message: <span class="hljs-string">'你好啊'</span></span>
-    &#125;
-  &#125;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
-<p>若控制台中输入一下代码：</p>
-<pre><code class="hljs html">vm.message='Hello World'</code></pre>
-<p>🔺 此时，message改变，界面并没有重新渲染</p>
-<p>🔺上述<code>{{message}}</code>的message修改后，第一个h2标签数据会自动改变，第二个h2不会。</p>
-<h4 id="🚩v-html"><a href="#🚩v-html" class="headerlink" title="🚩v-html"></a>🚩v-html</h4><ul>
-<li><p>某些情况下，我们从服务器请求到的数据本身就是一个HTML代码</p>
-</li>
-<li><p>如果我们直接通过<code>{{}}</code>来输出，会将HTML代码也一起输出。但是我们可能希望的是按照HTML格式进行解析，并且显示对应的内容。</p>
-</li>
-<li><p>如果我们希望解析出HTML展示，可以使用v-html指令</p>
-</li>
-<li><p>该指令后面往往会跟上一个string类型，会将string的html解析出来并且进行渲染</p>
-</li>
-</ul>
-<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>v-html使用<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>不使用v-html<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;url&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>使用v-html，直接插入html<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">v-html</span>=<span class="hljs-string">"url"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
-    data: &#123;
-<span class="actionscript">      message: <span class="hljs-string">'你好啊'</span>,</span>
-<span class="handlebars"><span class="xml">      url: '<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.baidu.com"</span>&gt;</span>百度一下<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>'</span></span>
-    &#125;
-  &#125;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
-<p>输出结果如下：</p>
-<p><img src="vue2-1.png" srcset="/img/loading.gif" alt=""></p>
-<h4 id="🚩v-text"><a href="#🚩v-text" class="headerlink" title="🚩v-text"></a>🚩v-text</h4><ul>
-<li><p>v-text作用和Mustache一致：</p>
-</li>
-<li><p>v-text通常情况下，接受一个string类型</p>
-<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>v-test 使用<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;message&#125;&#125;, 李银河!<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">v-text</span>=<span class="hljs-string">"message"</span>&gt;</span>, 李银河!<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
-    data: &#123;
-<span class="actionscript">      message: <span class="hljs-string">'你好啊'</span></span>
-    &#125;
-  &#125;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
-<p>输出结果如下：</p>
-<p><img src="vue2-2.png" srcset="/img/loading.gif" alt=""></p>
-</li>
-</ul>
-<p>  🔺如图所示，使用<code></code>是拼接<code>变量和字符串</code>，而是用<code>v-text</code>是直接覆盖<code>字符串内容</code>。</p>
-<h4 id="🚩v-pre"><a href="#🚩v-pre" class="headerlink" title="🚩v-pre"></a>🚩v-pre</h4><ul>
-<li><p>v-pre用于跳过这个元素和它子元素的编译过程，用于显示原本的Mustache语法。</p>
-</li>
-<li><p>比如下面的代码：</p>
 <pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
@@ -359,8 +212,16 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">v-pre</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- 错误的做法: 这里不可以使用mustache语法--&gt;</span>
+  <span class="hljs-comment">&lt;!--&lt;img src="&#123;&#123;imgURL&#125;&#125;" alt=""&gt;--&gt;</span>
+  <span class="hljs-comment">&lt;!-- 正确的做法: 使用v-bind指令 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">v-bind:src</span>=<span class="hljs-string">"imgURL"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">v-bind:href</span>=<span class="hljs-string">"aHref"</span>&gt;</span>百度一下<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-comment">&lt;!--&lt;h2&gt;&#123;&#123;&#125;&#125;&lt;/h2&gt;--&gt;</span>
+
+  <span class="hljs-comment">&lt;!--语法糖的写法--&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">:src</span>=<span class="hljs-string">"imgURL"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">:href</span>=<span class="hljs-string">"aHref"</span>&gt;</span>百度一下<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
@@ -368,58 +229,231 @@
 <span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
 <span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
     data: &#123;
-<span class="actionscript">      message: <span class="hljs-string">'你好啊'</span></span>
+<span class="actionscript">      message: <span class="hljs-string">'你好啊'</span>,</span>
+<span class="actionscript">      imgURL: <span class="hljs-string">'https://img11.360buyimg.com/mobilecms/s350x250_jfs/t1/20559/1/1424/73138/5c125595E3cbaa3c8/74fc2f84e53a9c23.jpg!q90!cc_350x250.webp'</span>,</span>
+<span class="actionscript">      aHref: <span class="hljs-string">'http://www.baidu.com'</span></span>
     &#125;
   &#125;)
 <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<p>🔺 此时<code>vue</code>对象中定义的<code>imgURL</code>变量和<code>aHerf</code>变量可以动态的绑定到<code>img</code>标签的<code>src</code>属性和<code>a</code>标签的<code>href</code>属性。</p>
+<p>🔺 第十五行的<code>:href</code>：<code>v-bind:</code>由于用的很多，<code>vue</code>对他有一个语法糖的优化写法也就是<code>:</code>，此时修改<code>imgURL</code>变量图片页重新加载。</p>
+<h3 id="3-2-v-bind动态绑定class"><a href="#3-2-v-bind动态绑定class" class="headerlink" title="3.2. v-bind动态绑定class"></a>3.2. v-bind动态绑定class</h3><p>🔺  很多时候，我们希望动态的来切换class，比如：当数据为某个状态时，字体显示红色;当数据另一个状态时，字体显示黑色。</p>
+<p>🔺  绑定class有两种方式：</p>
+<ul>
+<li><p>对象语法</p>
+</li>
+<li><p>数组语法</p>
 </li>
 </ul>
-<p>🔺第一个h2元素中的内容会被编译解析出来对应的内容-&gt;Hello World</p>
-<p>🔺第二个h2元素中会直接显示<code></code>，直接显示出字符串</p>
-<h4 id="🚩v-cloak-斗篷"><a href="#🚩v-cloak-斗篷" class="headerlink" title="🚩v-cloak: 斗篷"></a>🚩v-cloak: 斗篷</h4><ul>
-<li><p>某些情况下，我们浏览器可能会直接显示出未编译的Mustache标签</p>
-</li>
-<li><p>有时候因为加载延时问题，比如卡掉了以及数据没有及时刷新，就造成了页面显示从<code></code>到message变量“你好啊”的变化，这样闪动的变化，会造成用户体验不好。此时需要使用到<code>v-cloak</code>的这个标签。在vue解析之前，div属性中有<code>v-cloak</code>这个标签，在vue解析完成之后，v-cloak标签被移除。简单，类似div开始有一个css属性<code>display:none;</code>，加载完成之后，css属性变成<code>display:block</code>，元素显示出来。</p>
-</li>
+<h4 id="🚩-对象语法-作业-class-’-类名-boolean-’"><a href="#🚩-对象语法-作业-class-’-类名-boolean-’" class="headerlink" title="🚩 对象语法: 作业 :class=’{类名: boolean}’"></a>🚩 对象语法: 作业 :class=’{类名: boolean}’</h4><p>🔺 对象语法的含义是:class后面跟的是一个对象。</p>
+<p>🔺 对象语法有下面这些用法：</p>
+<ul>
+<li>用法一：直接通过{}绑定一个类</li>
 </ul>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"&#123;'active': isActive&#125;"</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<ul>
+<li>用法二：也可以通过判断，传入多个值</li>
+</ul>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"&#123;'active': isActive, 'line': isLine&#125;"</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<ul>
+<li>用法三：和普通的类同时存在，并不冲突</li>
+</ul>
+<p>注：如果<code>isActive</code>和<code>isLine</code>都为<code>true</code>，那么会有<code>title/active/line</code>三个类</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"&#123;'active': isActive, 'line': isLine&#125;"</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<ul>
+<li>用法四：如果过于复杂，可以放在一个<code>methods</code>或者<code>computed</code>中</li>
+</ul>
+<p>注：<code>classes</code>是一个计算属性</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"classes"</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<p> 🔺 有时候我们期望对Dom元素的节点的class进行动态绑定，选择此Dom是否有指定class属性。例如，给h2标签加上<code>class=&quot;active&quot;</code>，当Dom元素有次class时候，变红<code>&lt;style&gt;.active{color:red;}&lt;/style&gt;</code>，在写一个按钮绑定事件，点击变黑色，再次点击变红色。</p>
 <pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>v-cloak 斗篷使用<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
   <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>
-<span class="css">    <span class="hljs-selector-attr">[v-cloak]</span> &#123;</span>
-      display: none;
+<span class="css">    <span class="hljs-selector-class">.active</span> &#123;</span>
+      color: red;
     &#125;
   <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span> <span class="hljs-attr">v-cloak</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-comment">&lt;!--&lt;h2 class="active"&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;--&gt;</span>
+  <span class="hljs-comment">&lt;!--&lt;h2 :class="active"&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;--&gt;</span>
+
+  <span class="hljs-comment">&lt;!--&lt;h2 v-bind:class="&#123;key1: value1, key2: value2&#125;"&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;--&gt;</span>
+  <span class="hljs-comment">&lt;!--&lt;h2 v-bind:class="&#123;类名1: true, 类名2: boolean&#125;"&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;--&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span> <span class="hljs-attr">v-bind:class</span>=<span class="hljs-string">"&#123;active: isActive, line: isLine&#125;"</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span> <span class="hljs-attr">v-bind:class</span>=<span class="hljs-string">"getClasses()"</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"change"</span>&gt;</span>点击变色<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">  <span class="hljs-comment">// 在vue解析之前, div中有一个属性v-cloak</span></span>
-<span class="actionscript">  <span class="hljs-comment">// 在vue解析之后, div中没有一个属性v-cloak</span></span>
-<span class="actionscript">  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
-<span class="actionscript">    <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">      el: <span class="hljs-string">'#app'</span>,</span>
-      data: &#123;
-<span class="actionscript">        message: <span class="hljs-string">'你好啊'</span></span>
-      &#125;
-    &#125;)
-  &#125;, 1000)
+<span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
+    data: &#123;
+<span class="actionscript">      message: <span class="hljs-string">'你好啊'</span>,</span>
+<span class="actionscript">      active:<span class="hljs-string">"active"</span>，</span>
+<span class="actionscript">      isActive: <span class="hljs-literal">true</span></span>
+    &#125;,
+    methods: &#123;
+      change () &#123;
+<span class="actionscript">        <span class="hljs-keyword">this</span>.isActive = !<span class="hljs-keyword">this</span>.isActive</span>
+      &#125;,
+      getClasses () &#123;
+<span class="actionscript">        <span class="hljs-keyword">return</span> &#123;active: <span class="hljs-keyword">this</span>.isActive&#125;</span>
+    &#125;
+  &#125;)
 <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
-<p>以上笔记是根据王红元老师的课程整理的。</p>
-<p>More info: <a href="https://www.bilibili.com/video/BV15741177Eh?p=12" target="_blank" rel="noopener">王红元 | Vue 课程</a></p>
+<p> 🔺  定义两个变量<code>active</code>和<code>isActive</code>，在Dom元素中使用<code>:class={active:isActive}</code>，此时绑定的<code>class=&#39;active&#39;</code>，<code>isActive</code>为<code>true</code>，<code>active</code>显示，定义方法<code>change()</code>绑定在按钮上，点击按钮<code>this.isActive = !this.isActive</code>，控制Dom元素是否有<code>class=&#39;active&#39;</code>的属性。</p>
+<h4 id="🚩-数组语法"><a href="#🚩-数组语法" class="headerlink" title="🚩 数组语法:"></a>🚩 数组语法:</h4><p>🔺 数组语法的含义是<code>:class</code>后面跟的是一个数组。</p>
+<p>🔺 数组语法有下面这些用法：</p>
+<ul>
+<li>用法一：直接通过{}绑定一个类</li>
+</ul>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"['active']"</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<ul>
+<li>用法二：也可以传入多个值</li>
+</ul>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">“[‘active’,</span> '<span class="hljs-attr">line</span>']"&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<ul>
+<li>用法三：和普通的类同时存在，并不冲突</li>
+</ul>
+<p>注：会有title/active/line三个类</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">“[‘active’,</span> '<span class="hljs-attr">line</span>']"&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<p>用法四：如果过于复杂，可以放在一个<code>methods</code>或者<code>computed</code>中</p>
+<p>注：classes是一个计算属性</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"classes"</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<p>  🔺 class属性中可以放数组，会依次解析成对应的class</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"[active, line]"</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"getClasses()"</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
+    data: &#123;
+<span class="actionscript">      message: <span class="hljs-string">'你好啊'</span>,</span>
+<span class="actionscript">      active: <span class="hljs-string">'aaaaaa'</span>,</span>
+<span class="actionscript">      line: <span class="hljs-string">'bbbbbbb'</span></span>
+    &#125;,
+    methods: &#123;
+<span class="actionscript">      getClasses: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">        <span class="hljs-keyword">return</span> [<span class="hljs-keyword">this</span>.active, <span class="hljs-keyword">this</span>.line]</span>
+      &#125;
+    &#125;
+  &#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<h3 id="3-3-v-bind动态绑定style"><a href="#3-3-v-bind动态绑定style" class="headerlink" title="3.3. v-bind动态绑定style"></a>3.3. v-bind动态绑定style</h3><p>🔺 我们可以利用<code>v-bind:style</code>来绑定一些<code>CSS</code>内联样式。</p>
+<p>🔺 在写<code>CSS</code>属性名的时候，比如<code>font-size</code></p>
+<p>🔺 我们可以使用驼峰式<code>(camelCase) fontSize</code></p>
+<p>🔺 或短横线分隔<code>(kebab-case，记得用单引号括起来)`` ‘font-size’</code></p>
+<p>🔺 绑定class有两种方式：</p>
+<ul>
+<li><p>对象语法</p>
+</li>
+<li><p>数组语法</p>
+</li>
+</ul>
+<h4 id="🚩-对象语法"><a href="#🚩-对象语法" class="headerlink" title="🚩 对象语法:"></a>🚩 对象语法:</h4><pre><code class="hljs html">:style="&#123;color: currentColor, fontSize: fontSize + 'px'&#125;"</code></pre>
+<p>🔺 <code>style</code>后面跟的是一个对象类型</p>
+<p>🔺 对象的<code>key</code>是<code>CSS</code>属性名称</p>
+<p>🔺 对象的<code>value</code>是具体赋的值，值可以来自于<code>data</code>中的属性</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>
+<span class="css">    <span class="hljs-selector-class">.title</span> &#123;</span>
+      font-size: 50px;
+      color: red;
+    &#125;
+  <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-comment">&lt;!--&lt;h2 :style="&#123;key(属性名): value(属性值)&#125;"&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;--&gt;</span>
+
+  <span class="hljs-comment">&lt;!--'50px'必须加上单引号, 否则是当做一个变量去解析--&gt;</span>
+  <span class="hljs-comment">&lt;!--&lt;h2 :style="&#123;fontSize: '50px'&#125;"&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;--&gt;</span>
+
+  <span class="hljs-comment">&lt;!--finalSize当成一个变量使用--&gt;</span>
+  <span class="hljs-comment">&lt;!--&lt;h2 :style="&#123;fontSize: finalSize&#125;"&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;--&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">"&#123;fontSize: finalSize + 'px', backgroundColor: finalColor&#125;"</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">"getStyles()"</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
+    data: &#123;
+<span class="actionscript">      message: <span class="hljs-string">'你好啊'</span>,</span>
+      finalSize: 100,
+<span class="actionscript">      finalColor: <span class="hljs-string">'red'</span>,</span>
+    &#125;,
+    methods: &#123;
+<span class="actionscript">      getStyles: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">        <span class="hljs-keyword">return</span> &#123;fontSize: <span class="hljs-keyword">this</span>.finalSize + <span class="hljs-string">'px'</span>, backgroundColor: <span class="hljs-keyword">this</span>.finalColor&#125;</span>
+      &#125;
+    &#125;
+  &#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<h4 id="🚩-数组语法-1"><a href="#🚩-数组语法-1" class="headerlink" title="🚩 数组语法:"></a>🚩 数组语法:</h4><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-bind:style</span>=<span class="hljs-string">"[baseStyles, overridingStyles]"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<p>🔺 style后面跟的是一个数组类型</p>
+<p>🔺 多个值时，分割即可</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">"[baseStyle, baseStyle1]"</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
+    data: &#123;
+<span class="actionscript">      message: <span class="hljs-string">'你好啊'</span>,</span>
+<span class="actionscript">      baseStyle: &#123;backgroundColor: <span class="hljs-string">'red'</span>&#125;,</span>
+<span class="actionscript">      baseStyle1: &#123;fontSize: <span class="hljs-string">'100px'</span>&#125;,</span>
+    &#125;
+  &#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
 
             </article>
             <hr>
@@ -450,18 +484,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/04/26/vue3/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vue 笔记整理03</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/04/24/vue1/">
-                        <span class="hidden-mobile">Vue 笔记整理01</span>
+                      <a href="/2020/04/25/vue2/">
+                        <span class="hidden-mobile">Vue 笔记整理02</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -656,7 +684,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Vue 笔记整理02&nbsp;",
+        "Vue 笔记整理03&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
