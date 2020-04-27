@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>vue4 - oyeah</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>oyeah's workspace</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('https://ae01.alicdn.com/kf/Hc16b03c93061485585446a3581565b792.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-04-27 21:24">
+                    星期一, 四月 27日 2020, 9:24 晚上
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.8k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    26
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="四-计算属性"><a href="#四-计算属性" class="headerlink" title="四. 计算属性"></a>四. 计算属性</h1><h2 id="🚩-什么是计算属性？"><a href="#🚩-什么是计算属性？" class="headerlink" title="🚩 什么是计算属性？"></a>🚩 什么是计算属性？</h2><p>🔺  我们知道，在模板中可以直接通过插值语法显示一些<code>data</code>中的数据。但是在某些情况，我们可能需要对数据进行一些转化后再显示，或者需要将多个数据结合起来进行显示。比如我们有<code>firstName</code>和<code>lastName</code>两个变量，我们需要显示完整的名称。但是如果多个地方都需要显示完整的名称，我们就需要写多个<code></code>，<code></code>.我们可以将上面的代码换成计算属性,并且我们发现计算属性是写在实例的<code>computed</code>选项中的。</p>
+<h2 id="🚩-计算属性的基本使用"><a href="#🚩-计算属性的基本使用" class="headerlink" title="🚩 计算属性的基本使用"></a>🚩 计算属性的基本使用</h2><p>🔺  假如现在有变量姓氏和名字，要得到完整的名字，应该怎么用计算属性实现呢？</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>计算属性的基本使用<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;firstName + ' ' + lastName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;getFullName()&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;fullName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
+    data: &#123;
+<span class="actionscript">      firstName: <span class="hljs-string">'Lebron'</span>,</span>
+<span class="actionscript">      lastName: <span class="hljs-string">'James'</span></span>
+    &#125;,
+<span class="actionscript">    <span class="hljs-comment">// computed: 计算属性()</span></span>
+    computed: &#123;
+<span class="actionscript">      fullName: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.lastName</span>
+      &#125;
+    &#125;,
+    methods: &#123;
+      getFullName() &#123;
+<span class="actionscript">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.lastName</span>
+      &#125;
+    &#125;
+  &#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<p>🔺  第十行：使用<code>Mastache</code>语法拼接</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span> &#123;&#123;firstName+ " " + lastName&#125;&#125; <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<p>🔺  第三十二行：使用方法methods</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span> &#123;&#123;getFullName()&#125;&#125; <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<p>🔺  第二十七行：使用计算属性computed</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span> &#123;&#123;fullName&#125;&#125; <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<blockquote>
+<p>👩注意👩: 例子中计算属性<code>computed</code>的使用看起来和方法<code>methods</code>似乎一样，只是方法<code>methods</code>在调用时需要使用<code>()</code>，而计算属性不用，方法取名字一般是动词见名知义，而计算属性是属性是名词，但这只是基本使用。</p>
+</blockquote>
+<h2 id="🚩-计算属性的复杂操作"><a href="#🚩-计算属性的复杂操作" class="headerlink" title="🚩 计算属性的复杂操作"></a>🚩 <strong>计算属性的复杂操作</strong></h2><p>🔺  计算属性中也可以进行一些更加复杂的操作，比如下面的例子：</p>
+<p>如果现在有一个数组数据<code>books</code>，里面包含许多<code>book</code>对象，数据结构如下：</p>
+<pre><code class="hljs javascript">books:[
+
+     &#123;<span class="hljs-attr">id</span>:<span class="hljs-number">110</span>,<span class="hljs-attr">name</span>:<span class="hljs-string">"Unix编程艺术"</span>,<span class="hljs-attr">price</span>:<span class="hljs-number">119</span>&#125;, 
+
+     &#123;<span class="hljs-attr">id</span>:<span class="hljs-number">111</span>,<span class="hljs-attr">name</span>:<span class="hljs-string">"代码大全"</span>,<span class="hljs-attr">price</span>:<span class="hljs-number">105</span>&#125;,
+
+     &#123;<span class="hljs-attr">id</span>:<span class="hljs-number">112</span>,<span class="hljs-attr">name</span>:<span class="hljs-string">"精通JavaScript"</span>,<span class="hljs-attr">price</span>:<span class="hljs-number">80</span>&#125;,
+
+     &#123;<span class="hljs-attr">id</span>:<span class="hljs-number">113</span>,<span class="hljs-attr">name</span>:<span class="hljs-string">"现代操作系统"</span>,<span class="hljs-attr">price</span>:<span class="hljs-number">87</span>&#125;,
+
+    ]</code></pre>
+<p>要求你计算出所有<code>book</code>的总价格<code>totalPrice</code>,你该怎么做呢？</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>计算属性的复杂操作<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>总价格: &#123;&#123;totalPrice&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>总价格: &#123;&#123;totalPrice&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>总价格: &#123;&#123;totalPrice&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>总价格: &#123;&#123;totalPrice&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>总价格: &#123;&#123;getTotalPrice()&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>总价格: &#123;&#123;getTotalPrice()&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>总价格: &#123;&#123;getTotalPrice()&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>总价格: &#123;&#123;getTotalPrice()&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
+    data: &#123;
+      books: [
+<span class="actionscript">        &#123;id: <span class="hljs-number">110</span>, name: <span class="hljs-string">'Unix编程艺术'</span>, price: <span class="hljs-number">119</span>&#125;,</span>
+<span class="actionscript">        &#123;id: <span class="hljs-number">111</span>, name: <span class="hljs-string">'代码大全'</span>, price: <span class="hljs-number">105</span>&#125;,</span>
+<span class="actionscript">        &#123;id: <span class="hljs-number">112</span>, name: <span class="hljs-string">'精通JavaScript'</span>, price: <span class="hljs-number">80</span>&#125;,</span>
+<span class="actionscript">        &#123;id: <span class="hljs-number">113</span>, name: <span class="hljs-string">'现代操作系统'</span>, price: <span class="hljs-number">87</span>&#125;,</span>
+      ]
+    &#125;,
+    methods: &#123;
+<span class="actionscript">      getTotalPrice: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">        <span class="hljs-keyword">let</span> result = <span class="hljs-number">0</span></span>
+<span class="javascript">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.books.length; i++) &#123;</span>
+<span class="actionscript">          result += <span class="hljs-keyword">this</span>.books[i].price</span>
+        &#125;
+<span class="actionscript">        <span class="hljs-keyword">return</span> result</span>
+      &#125;
+    &#125;,
+    computed: &#123;
+<span class="actionscript">      totalPrice: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">        <span class="hljs-keyword">let</span> result = <span class="hljs-number">0</span></span>
+<span class="javascript">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.books.length; i++) &#123;</span>
+<span class="actionscript">          result += <span class="hljs-keyword">this</span>.books[i].price</span>
+        &#125;
+<span class="actionscript">        <span class="hljs-keyword">return</span> result</span>
+
+<span class="actionscript">        <span class="hljs-comment">// for (let i in this.books) &#123;</span></span>
+<span class="actionscript">        <span class="hljs-comment">//   this.books[i]</span></span>
+<span class="actionscript">        <span class="hljs-comment">// &#125;</span></span>
+<span class="actionscript">        <span class="hljs-comment">//</span></span>
+<span class="actionscript">        <span class="hljs-comment">// for (let book of this.books) &#123;</span></span>
+<span class="actionscript">        <span class="hljs-comment">//</span></span>
+<span class="actionscript">        <span class="hljs-comment">// &#125;</span></span>
+      &#125;
+    &#125;
+  &#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<blockquote>
+<p>方法👩: 通过获取每一个<code>book</code>对象的<code>price</code>属性，将他们累加起来，当其中一个<code>book</code>的价格发生改变时候，总价会随之变化。</p>
+</blockquote>
+<h2 id="🚩-计算属性的setter和getter"><a href="#🚩-计算属性的setter和getter" class="headerlink" title="🚩 计算属性的setter和getter"></a>🚩 <strong>计算属性的</strong>setter<strong>和</strong>getter</h2><p>🔺  每个计算属性都包含一个<code>getter</code>和一个<code>setter</code>。在上面的例子中，我们只是使用<code>getter</code>来读取。在某些情况下，你也可以提供一个<code>setter</code>方法（不常用）。在需要写<code>setter</code>的时候，代码如下：</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>计算属性的setter和getter<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;fullName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
+    data: &#123;
+<span class="actionscript">      firstName: <span class="hljs-string">'Kobe'</span>,</span>
+<span class="actionscript">      lastName: <span class="hljs-string">'Bryant'</span></span>
+    &#125;,
+    computed: &#123;
+<span class="actionscript">      <span class="hljs-comment">// fullName: function () &#123;</span></span>
+<span class="actionscript">      <span class="hljs-comment">//   return this.firstName + ' ' + this.lastName</span></span>
+<span class="actionscript">      <span class="hljs-comment">// &#125;</span></span>
+<span class="actionscript">      <span class="hljs-comment">// name: 'coderwhy'</span></span>
+<span class="actionscript">      <span class="hljs-comment">// 计算属性一般是没有set方法, 只读属性.</span></span>
+      fullName: &#123;
+<span class="actionscript">        <span class="hljs-keyword">set</span>: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(newValue)</span> </span>&#123;</span>
+<span class="actionscript">          <span class="hljs-comment">// console.log('-----', newValue);</span></span>
+<span class="actionscript">          <span class="hljs-keyword">const</span> names = newValue.split(<span class="hljs-string">' '</span>);</span>
+<span class="actionscript">          <span class="hljs-keyword">this</span>.firstName = names[<span class="hljs-number">0</span>];</span>
+<span class="actionscript">          <span class="hljs-keyword">this</span>.lastName = names[<span class="hljs-number">1</span>];</span>
+        &#125;,
+<span class="actionscript">        <span class="hljs-keyword">get</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">          <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.lastName</span>
+        &#125;
+      &#125;,
+
+<span class="actionscript">      <span class="hljs-comment">// fullName: function () &#123;</span></span>
+<span class="actionscript">      <span class="hljs-comment">//   return this.firstName + ' ' + this.lastName</span></span>
+<span class="actionscript">      <span class="hljs-comment">// &#125;</span></span>
+    &#125;
+  &#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<blockquote>
+<p>👩注意👩: 计算属性一般没有<code>set</code>方法，属于只读属性，只有<code>get</code>方法，但是上述中<code>newValue</code>就是新的值，也可以使用<code>set</code>方法设置值，但是一般不用。</p>
+</blockquote>
+<h2 id="🚩-计算属性的缓存"><a href="#🚩-计算属性的缓存" class="headerlink" title="🚩 计算属性的缓存"></a>🚩 <strong>计算属性的缓存</strong></h2><p>🔺  我们可能会考虑这样的一个问题：<code>methods</code>和<code>computed</code>看起来都可以实现我们的功能，那么为什么还要多一个计算属性这个东西呢？</p>
+<p>🔺  原因：计算属性会进行缓存，如果多次使用时，计算属性只会调用一次。</p>
+<p>🔺  我们来看下面的代码：</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span> 计算属性的缓存<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-comment">&lt;!--1.直接拼接: 语法过于繁琐--&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!--2.通过定义methods,即使firstName和lastName没有改变，也需要再次执行--&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;getFullName()&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;getFullName()&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;getFullName()&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;getFullName()&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!--3.通过computed, 计算属性有缓存，只有关联属性改变才会再次计算--&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;fullName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;fullName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;fullName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;fullName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">  <span class="hljs-comment">// angular -&gt; google</span></span>
+<span class="actionscript">  <span class="hljs-comment">// TypeScript(microsoft) -&gt; ts(类型检测)</span></span>
+<span class="actionscript">  <span class="hljs-comment">// flow(facebook) -&gt;</span></span>
+<span class="actionscript">  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">    el: <span class="hljs-string">'#app'</span>,</span>
+    data: &#123;
+<span class="actionscript">      firstName: <span class="hljs-string">'Kobe'</span>,</span>
+<span class="actionscript">      lastName: <span class="hljs-string">'Bryant'</span></span>
+    &#125;,
+    methods: &#123;
+<span class="actionscript">      getFullName: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'getFullName'</span>);</span>
+<span class="actionscript">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.lastName</span>
+      &#125;
+    &#125;,
+    computed: &#123;
+<span class="actionscript">      fullName: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'fullName'</span>);</span>
+<span class="actionscript">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.lastName</span>
+      &#125;
+    &#125;
+  &#125;)
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<blockquote>
+<p>👩注意👩: 由此可见计算属性有缓存，在<code>this.firstName + &quot; &quot; + this.lastName</code>的属性不变的情况下，<code>methods</code>调用了四次，而计算属性才调用了一次，性能上计算属性明显比<code>methods</code>好。而且在改动<code>firstName</code>的情况下，计算属性只调用一次，<code>methods</code>依然要调用4次。</p>
+</blockquote>
+<p>以上笔记是根据王红元老师的课程整理的。</p>
+<p>More info: <a href="https://www.bilibili.com/video/BV15741177Eh?p=12" target="_blank" rel="noopener">王红元 | Vue 课程</a></p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/04/26/vue3/">
+                        <span class="hidden-mobile">Vue 笔记整理03</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
+
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
+      new Valine({
+        el: "#vcomments",
+        app_id: "FgPR1XXuEWCbs2UYAySwbsl3-gzGzoHsz",
+        app_key: "NV6MprxzmQELSYm3ML3ktD1A",
+        placeholder: "说点什么",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
+        pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
+      });
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+    <div class="text-center py-3">
+        <div>
+            <a href="https://github.com/oyeah-hua" target="_blank" rel="nofollow noopener"><span>Github</span></a>
+            <i class="iconfont icon-love"></i>
+            <a href="https://mp.weixin.qq.com/s/J6kOgeGzqJQAMuFwjmrWNg" target="_blank" rel="nofollow noopener">
+                <span>Wechat</span></a>
+        </div>
+
+
+        
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+            
+
+                
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "vue4&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
