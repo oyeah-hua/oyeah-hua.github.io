@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>vue10 - oyeah</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>oyeah's workspace</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('https://ae01.alicdn.com/kf/Hc16b03c93061485585446a3581565b792.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-05 21:41">
+                    星期二, 五月 5日 2020, 9:41 晚上
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.7k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    21
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="（十）组件化"><a href="#（十）组件化" class="headerlink" title="（十）组件化"></a>（十）组件化</h1><h2 id="🚩-什么是组件化"><a href="#🚩-什么是组件化" class="headerlink" title="🚩  什么是组件化"></a>🚩  什么是组件化</h2><p> 🔺 人面对复杂问题的处理方式：任何一个人处理信息的逻辑能力都是有限的。所以，当面对一个非常复杂的问题时，我们不太可能一次性搞定一大堆的内容。但是，我们人有一种天生的能力，就是将问题进行拆解。如果将一个复杂的问题，拆分成很多个可以处理的小问题，再将其放在整体当中，你会发现大的问题也会迎刃而解。</p>
+<p>🔺 组件化也是类似的思想：如果我们将一个页面中所有的处理逻辑全部放在一起，处理起来就会变得非常复杂，而且不利于后续的管理以及扩展。但如果，我们讲一个页面拆分成一个个小的功能块，每个功能块完成属于自己这部分独立的功能，那么之后整个页面的管理和维护就变得非常容易了。</p>
+<h2 id="🚩-Vue-组件化思想"><a href="#🚩-Vue-组件化思想" class="headerlink" title="🚩  Vue 组件化思想"></a>🚩  Vue 组件化思想</h2><p> 🔺 组件化是<code>Vue.js</code>中的重要思想。它提供了一种抽象，让我们可以开发出一个个独立可复用的小组件来构造我们的应用。任何的应用都会被抽象成一颗组件树。</p>
+<p> 🔺组件化思想的应用：有了组件化的思想，我们在之后的开发中就要充分的利用它。尽可能的将页面拆分成一个个小的、可复用的组件。这样让我们的代码更加方便组织和管理，并且扩展性也更强。所以，组件是<code>Vue</code>开发中，非常重要的一个篇章，要认真学习。</p>
+<h2 id="🚩-组件的基本使用"><a href="#🚩-组件的基本使用" class="headerlink" title="🚩  组件的基本使用"></a>🚩  组件的基本使用</h2><p> 🔺 组件的使用分成三个步骤：</p>
+<ul>
+<li><p>创建组件构造器</p>
+</li>
+<li><p>注册组件</p>
+</li>
+<li><p>使用组件</p>
+</li>
+</ul>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+   <span class="hljs-comment">&lt;!-- 3.使用组件 --&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">my-cpn</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-cpn</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">my-cpn</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-cpn</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">my-cpn</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-cpn</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">cpnc</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpnc</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">   <span class="hljs-comment">// 1.创建组件构造器对象</span></span>
+<span class="actionscript">   <span class="hljs-keyword">const</span> cpnc = Vue.extend(&#123;</span>
+     template:`
+<span class="handlebars"><span class="xml">       <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">         <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>标题<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>内容1...<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>内容2...<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>`</span></span>
+   &#125;)
+<span class="actionscript">   <span class="hljs-comment">// 2.注册组件</span></span>
+<span class="actionscript">   Vue.component(<span class="hljs-string">'my-cpn'</span>, cpnc)</span>
+<span class="actionscript">   <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">     el:<span class="hljs-string">"#app"</span>,</span>
+     data:&#123;
+     &#125;,
+<span class="actionscript">     components:&#123;<span class="hljs-comment">//局部组件创建</span></span>
+       cpnc:cpnc
+     &#125;
+   &#125;)
+ <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p> 👩注意👩:  组件是可复用的 <code>Vue</code>实例，且带有一个名字.在这个例子中是 <code>my-cpn</code>。我们可以在一个通过 <code>new Vue</code> 创建的 <code>Vue</code>根实例中，把这个组件作为自定义元素来使用： <code>&lt;my-cpn&gt;&lt;/my-cpn&gt;</code>。</p>
+<h2 id="🚩-创造组件构造器对象"><a href="#🚩-创造组件构造器对象" class="headerlink" title="🚩  创造组件构造器对象"></a>🚩  创造组件构造器对象</h2><p> 🔺 注册组件</p>
+<ol>
+<li><p>全局注册，通过 <code>Vue.component</code>。</p>
+</li>
+<li><p>局部注册，通过 <code>components:{cpnc:cpnc}</code>。</p>
+<p>🔺 使用组件</p>
+<p>像使用html标签一样使用。</p>
+</li>
+</ol>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 3.使用组件 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">my-cpn</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-cpn</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">my-cpn</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-cpn</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">my-cpn</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-cpn</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpnc</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpnc</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<h2 id="🚩-全局组件和局部组件"><a href="#🚩-全局组件和局部组件" class="headerlink" title="🚩 全局组件和局部组件"></a>🚩 全局组件和局部组件</h2><p>🔺  组件的注册方式有两种，一种是全局组件，一种是局部组件。</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>全局组件<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">my-cpn</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-cpn</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>局部组件<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">cpnc</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpnc</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">   <span class="hljs-comment">// 1.创建组件构造器对象</span></span>
+<span class="actionscript">   <span class="hljs-keyword">const</span> cpnc = Vue.extend(&#123;</span>
+     template:`
+<span class="handlebars"><span class="xml">       <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">         <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>标题<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>内容1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>内容2<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>`</span></span>
+   &#125;)
+<span class="actionscript">   <span class="hljs-comment">// 2.注册组件（全局组件，可以在多个vue实例中使用）</span></span>
+<span class="actionscript">   Vue.component(<span class="hljs-string">'my-cpn'</span>, cpnc)</span>
+
+<span class="actionscript">   <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">     el:<span class="hljs-string">"#app"</span>,</span>
+<span class="actionscript">     components:&#123;<span class="hljs-comment">//局部组件创建</span></span>
+       cpnc:cpnc
+     &#125;
+   &#125;)
+ <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>🔺  全局组件</p>
+<p> 全局组件，可以在多个<code>vue</code>实例中使用，类似于全局变量。</p>
+<p>👩注意👩: 使用<code>Vue.component(&#39;my-cpn&#39;, cpnc)</code>方式注册，直接使用<code>&lt;my-cpn&gt;&lt;/my-cpn&gt;</code>调用。<code>my-cpn</code>是全局组件的名字，<code>cpnc</code>是定义的组件对象。</p>
+<p>🔺  局部组件</p>
+<p>局部组件，只能在当前<code>vue</code>实例挂载的对象中使用，类似于局部变量，有块级作用域。</p>
+<p>注册方式：</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;
+      el:<span class="hljs-string">"#app"</span>,
+      components:&#123;<span class="hljs-comment">//局部组件创建</span>
+        cpnc:cpnc
+      &#125;
+    &#125;)</code></pre>
+<p>👩注意👩: 使用方式与全局变量一样，直接使用<code>&lt;cpnc&gt;&lt;/cpnc&gt;</code>调用。<code>cpnc:cpnc</code>，第一个<code>cpnc</code>是给组件命名的名字，第二个是定义的组件对象。如果俩个同名也可以直接使用<code>es6</code>语法：</p>
+<pre><code class="hljs javascript">components:&#123;<span class="hljs-comment">//局部组件创建</span>
+        cpnc
+&#125;</code></pre>
+<h2 id="🚩-父组件与子组件的区别"><a href="#🚩-父组件与子组件的区别" class="headerlink" title="🚩 父组件与子组件的区别"></a>🚩 父组件与子组件的区别</h2><p>🔺  组件的注册方式有两种，一种是全局组件，一种是局部组件。</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn2</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn2</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-comment">// 1.创建组件构造器对象</span></span>
+<span class="actionscript">    <span class="hljs-keyword">const</span> cpn1 = Vue.extend(&#123;</span>
+      template:`
+<span class="handlebars"><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">          <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>标题1<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">          <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>组件1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>`</span></span>
+    &#125;)
+<span class="actionscript">    <span class="hljs-comment">// 组件2中使用组件1</span></span>
+<span class="actionscript">    <span class="hljs-keyword">const</span> cpn2 = Vue.extend(&#123;</span>
+      template:`
+<span class="handlebars"><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">          <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>标题2<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">          <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>组件2<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">          <span class="hljs-tag">&lt;<span class="hljs-name">cpn1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn1</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>`,</span></span>
+      components:&#123;
+        cpn1:cpn1
+      &#125;
+    &#125;)
+
+<span class="actionscript">    <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">      el:<span class="hljs-string">"#app"</span>,</span>
+<span class="actionscript">      components:&#123;<span class="hljs-comment">//局部组件创建</span></span>
+        cpn2:cpn2
+      &#125;
+    &#125;)
+  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>上述代码中定义了两个组件对象<code>cpn1</code>和<code>cpn2</code>，在组件<code>cpn2</code>中使用局部组件注册了<code>cpn1</code>，并在<code>template</code>中使用了注册的<code>cpn1</code>，然后在<code>vue</code>实例中使用注册了局部组件<code>cpn2</code>，在<code>vue</code>实例挂载的<code>div</code>中调用了<code>cpn2</code>，<code>cpn2</code>与<code>cpn1</code>形成父子组件关系。</p>
+<p>👩注意👩: 组件就是一个<code>vue</code>实例，<code>vue</code>实例的属性，组件也可以有，例如<code>data</code>、<code>methods</code>、<code>computed</code>等。</p>
+<h2 id="🚩-注册组件的语法糖"><a href="#🚩-注册组件的语法糖" class="headerlink" title="🚩 注册组件的语法糖"></a>🚩 注册组件的语法糖</h2><p>🔺  组件的注册方式有两种，一种是全局组件，一种是局部组件。</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn2</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn2</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-comment">// 1.注册全局组件语法糖</span></span>
+<span class="actionscript">    Vue.component(<span class="hljs-string">'cpn1'</span>, &#123;</span>
+      template:`
+<span class="handlebars"><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">          <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>全局组件语法糖<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">          <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>全局组件语法糖<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>`</span></span>
+    &#125;)
+
+<span class="actionscript">    <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">      el:<span class="hljs-string">"#app"</span>,</span>
+<span class="actionscript">      components:&#123;<span class="hljs-comment">//局部组件创建</span></span>
+        cpn2:&#123;
+          template:`
+<span class="handlebars"><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">          <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>局部组件语法糖<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">          <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>局部组件语法糖<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>`</span></span>
+        &#125;
+      &#125;
+    &#125;)
+  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>👩注意👩: 注册组件时候可以不实例化组件对象，直接在注册的时候实例化。<code>{}</code>就是一个组件对象。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/04/vue9/">
+                        <span class="hidden-mobile">vue9</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
+
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
+      new Valine({
+        el: "#vcomments",
+        app_id: "FgPR1XXuEWCbs2UYAySwbsl3-gzGzoHsz",
+        app_key: "NV6MprxzmQELSYm3ML3ktD1A",
+        placeholder: "说点什么",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
+        pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
+      });
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+    <div class="text-center py-3">
+        <div>
+            <a href="https://github.com/oyeah-hua" target="_blank" rel="nofollow noopener"><span>Github</span></a>
+            <i class="iconfont icon-love"></i>
+            <a href="https://mp.weixin.qq.com/s/J6kOgeGzqJQAMuFwjmrWNg" target="_blank" rel="nofollow noopener">
+                <span>Wechat</span></a>
+        </div>
+
+
+        
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+            
+
+                
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "vue10&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>vue9 - oyeah</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>oyeah's workspace</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('https://ae01.alicdn.com/kf/Hc16b03c93061485585446a3581565b792.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-04 22:26">
+                    星期一, 五月 4日 2020, 10:26 晚上
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.1k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    17
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="（九）综合练习"><a href="#（九）综合练习" class="headerlink" title="（九）综合练习"></a>（九）综合练习</h1><h2 id="🚩-图书馆购物车案例"><a href="#🚩-图书馆购物车案例" class="headerlink" title="🚩  图书馆购物车案例"></a>🚩  图书馆购物车案例</h2><p> 🔺 综合前面的知识，需要通过一个小demo来串联起知识。</p>
+<p> 🔺 点击“+”按钮，总价增加，点击“-”按钮总价减少，点击移除，移除当列。</p>
+<p>🔺   HTML代码：</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>图书购物车小案例<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"style.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>书籍名称<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>出版日期<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>价格<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>购买数量<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>操作<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(book, index) in books"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;index&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;book.name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;book.beginDate&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;book.price | showPrice&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"decrement(index)"</span> <span class="hljs-attr">:disabled</span>=<span class="hljs-string">"book.count&lt;=1"</span> &gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            &#123;&#123;book.count&#125;&#125;
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"increment(index)"</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"remove"</span>&gt;</span>移除<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>总价：&#123;&#123;totalPrice | showPrice&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>  <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"main.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<p>👩注意👩: 使用计算属性记录总价，使用<code>v-for</code>循环遍历数组变量，使用<code>table</code>输出到<code>html</code>页面上。</p>
+<p>🔺  JavaScript代码</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;
+  el: <span class="hljs-string">"#app"</span>,
+  data: &#123;
+    books: [&#123;
+        name: <span class="hljs-string">"《算法导论》"</span>,
+        beginDate: <span class="hljs-string">"2006-9"</span>,
+        price: <span class="hljs-number">85.00</span>,
+        count: <span class="hljs-number">1</span>
+      &#125;,
+      &#123;
+        name: <span class="hljs-string">"《UNIX编程艺术》"</span>,
+        beginDate: <span class="hljs-string">"2006-2"</span>,
+        price: <span class="hljs-number">59.00</span>,
+        count: <span class="hljs-number">1</span>
+      &#125;,
+      &#123;
+        name: <span class="hljs-string">"《编程大全》"</span>,
+        beginDate: <span class="hljs-string">"2008-10"</span>,
+        price: <span class="hljs-number">39.00</span>,
+        count: <span class="hljs-number">1</span>
+      &#125;,
+      &#123;
+        name: <span class="hljs-string">"《代码大全》"</span>,
+        beginDate: <span class="hljs-string">"2006-3"</span>,
+        price: <span class="hljs-number">128.00</span>,
+        count: <span class="hljs-number">1</span>
+      &#125;,
+    ]
+  &#125;,
+  computed: &#123;
+    totalPrice () &#123;
+        <span class="hljs-keyword">let</span> total = <span class="hljs-number">0</span>;
+        <span class="hljs-comment">//1.普通for循环</span>
+        <span class="hljs-comment">// for (let i = 0; i &lt; this.books.length; i++) &#123;</span>
+        <span class="hljs-comment">//   total = total + this.books[i].price * this.books[i].count</span>
+        <span class="hljs-comment">// &#125;</span>
+        <span class="hljs-comment">// 2.增强for循环</span>
+        <span class="hljs-comment">// for (let i in this.books) &#123;</span>
+        <span class="hljs-comment">//   total = total + this.books[i].price * this.books[i].count</span>
+        <span class="hljs-comment">// &#125;</span>
+        <span class="hljs-comment">// 3.for of</span>
+        <span class="hljs-comment">// for (const book of this.books) &#123;</span>
+        <span class="hljs-comment">//   total = total + book.price * book.count</span>
+        <span class="hljs-comment">// &#125;</span>
+        <span class="hljs-comment">// return total</span>
+        <span class="hljs-comment">// 2.使用高阶函数</span>
+
+        <span class="hljs-comment">// return this.books.map(function (book) &#123;</span>
+        <span class="hljs-comment">//   return book.price * book.count</span>
+        <span class="hljs-comment">//  &#125;).reduce(function (preValue,currentValue) &#123;</span>
+        <span class="hljs-comment">//     return preValue + currentValue</span>
+        <span class="hljs-comment">//   &#125;)</span>
+        <span class="hljs-comment">// 3.高阶函数简写（箭头函数）</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.books.map(<span class="hljs-function"><span class="hljs-params">book</span> =&gt;</span> book.price * book.count).reduce(<span class="hljs-function">(<span class="hljs-params">preValue,currentVlue</span>) =&gt;</span> preValue + currentVlue)
+      &#125;
+  &#125;,
+  methods: &#123;
+    increment(index)&#123;
+      <span class="hljs-keyword">this</span>.books[index].count++
+    &#125;,
+    decrement(index)&#123;
+      <span class="hljs-keyword">this</span>.books[index].count--
+    &#125;,
+    remove(index)&#123;
+      <span class="hljs-keyword">this</span>.books.splice(index,<span class="hljs-number">1</span>)
+    &#125;
+  &#125;,
+  filters:&#123;<span class="hljs-comment">//过滤器</span>
+    showPrice(price)&#123;
+      <span class="hljs-keyword">return</span> <span class="hljs-string">"￥"</span> + price.toFixed(<span class="hljs-number">2</span>)
+    &#125;
+  &#125;
+&#125;)
+
+<span class="hljs-comment">// 1.filter过滤函数</span>
+<span class="hljs-keyword">const</span> nums = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">77</span>,<span class="hljs-number">55</span>,<span class="hljs-number">100</span>,<span class="hljs-number">200</span>]
+<span class="hljs-comment">//要求获取nums中大于50的数</span>
+<span class="hljs-comment">//回调函数会遍历nums中每一个数，传入回调函数，在回调函数中写判断逻辑，返回true则会被数组接收，false会被拒绝</span>
+<span class="hljs-keyword">let</span> newNums = nums.filter(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">num</span>) </span>&#123;
+  <span class="hljs-keyword">if</span>(num &gt; <span class="hljs-number">50</span>)&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+ &#125;)
+ <span class="hljs-comment">//可以使用箭头函数简写</span>
+<span class="hljs-comment">//  let newNums = nums.filter(num =&gt; num &gt;50)</span>
+ <span class="hljs-built_in">console</span>.log(newNums);
+<span class="hljs-comment">// 2.map高阶函数</span>
+<span class="hljs-comment">// 要求将已经过滤的新数组每项乘以2</span>
+<span class="hljs-comment">//map函数同样会遍历数组每一项，传入回调函数为参数，num是map遍历的每一项，回调函数function返回值会被添加到新数组中</span>
+<span class="hljs-keyword">let</span> newNums2 = newNums.map(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">num</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> num * <span class="hljs-number">2</span>
+ &#125;)
+ <span class="hljs-comment">//简写</span>
+<span class="hljs-comment">//  let newNums2 = newNums.map(num =&gt; num * 2)</span>
+<span class="hljs-built_in">console</span>.log(newNums2);
+<span class="hljs-comment">// 3.reduce高阶函数</span>
+<span class="hljs-comment">//要求将newNums2的数组所有数累加</span>
+<span class="hljs-comment">//reduce函数同样会遍历数组每一项，传入回调函数和‘0’为参数，0表示回调函数中preValue初始值为0，回调函数中参数preValue是每一次回调函数function返回的值，currentValue是当前值</span>
+<span class="hljs-comment">//例如数组为[154, 110, 200, 400],则回调函数第一次返回值为0+154=154，第二次preValue为154，返回值为154+110=264，以此类推直到遍历完成</span>
+<span class="hljs-keyword">let</span> newNum = newNums2.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">preValue,currentValue</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> preValue + currentValue
+ &#125;,<span class="hljs-number">0</span>)
+<span class="hljs-comment">//简写</span>
+<span class="hljs-comment">// let newNum = newNums2.reduce((preValue,currentValue) =&gt; preValue + currentValue)</span>
+<span class="hljs-built_in">console</span>.log(newNum);
+
+<span class="hljs-comment">//三个需求综合</span>
+<span class="hljs-keyword">let</span> n = nums.filter(<span class="hljs-function"><span class="hljs-params">num</span> =&gt;</span> num &gt; <span class="hljs-number">50</span>).map(<span class="hljs-function"><span class="hljs-params">num</span> =&gt;</span> num * <span class="hljs-number">2</span>).reduce(<span class="hljs-function">(<span class="hljs-params">preValue,currentValue</span>) =&gt;</span> preValue + currentValue)
+<span class="hljs-built_in">console</span>.log(n);</code></pre>
+<p>👩注意👩: 使用<code>books</code>数组对象记录<code>book</code>数据，使用<code>totalPrice</code>计算属性计算总价。</p>
+<ol>
+<li><p>使用普通<code>for</code>循环</p>
+</li>
+<li><p>使用增强<code>for</code>循环数组索引</p>
+</li>
+<li><p>使用<code>for of</code>，直接循环数组内的对象</p>
+</li>
+<li><p>使用高阶函数<code>map</code>对象计算每个<code>book</code>对象的总价，在使用<code>reduce</code>累加总价。</p>
+</li>
+</ol>
+<p>🔺  CSS代码如下：</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">table</span>&#123;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span>;
+  <span class="hljs-attribute">border-collapse</span>: collapse;
+  <span class="hljs-attribute">border-spacing</span>: <span class="hljs-number">0</span>;
+&#125;
+<span class="hljs-selector-tag">th</span>,<span class="hljs-selector-tag">td</span>&#123;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">border</span>: ipx solid <span class="hljs-number">#e9e9e9</span>;
+  <span class="hljs-attribute">text-align</span>: left;
+&#125;
+<span class="hljs-selector-tag">th</span>&#123;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f7f7f7</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#5c6b77</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
+&#125;</code></pre>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/05/vue10/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vue10</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/03/vue8/">
+                        <span class="hidden-mobile">vue8</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
+
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
+      new Valine({
+        el: "#vcomments",
+        app_id: "FgPR1XXuEWCbs2UYAySwbsl3-gzGzoHsz",
+        app_key: "NV6MprxzmQELSYm3ML3ktD1A",
+        placeholder: "说点什么",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
+        pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
+      });
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+    <div class="text-center py-3">
+        <div>
+            <a href="https://github.com/oyeah-hua" target="_blank" rel="nofollow noopener"><span>Github</span></a>
+            <i class="iconfont icon-love"></i>
+            <a href="https://mp.weixin.qq.com/s/J6kOgeGzqJQAMuFwjmrWNg" target="_blank" rel="nofollow noopener">
+                <span>Wechat</span></a>
+        </div>
+
+
+        
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+            
+
+                
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "vue9&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
