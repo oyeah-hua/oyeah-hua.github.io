@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>vue11 - oyeah</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>oyeah's workspace</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('https://ae01.alicdn.com/kf/Hc16b03c93061485585446a3581565b792.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-06 22:32">
+                    星期三, 五月 6日 2020, 10:32 晚上
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    751 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    11
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="（十）组件模板"><a href="#（十）组件模板" class="headerlink" title="（十）组件模板"></a>（十）组件模板</h1><h2 id="🚩-组件模板的分离写法"><a href="#🚩-组件模板的分离写法" class="headerlink" title="🚩  组件模板的分离写法"></a>🚩  组件模板的分离写法</h2><p>🔺 使用<code>script</code>标签定义组件的模板，<code>script</code>标签注意类型是<code>text/x-template</code>。</p>
+<pre><code class="hljs javascript">&lt;!-- <span class="hljs-number">1.</span>script标签注意类型是text/x-template --&gt;
+ &lt;script type=<span class="hljs-string">"text/x-template"</span> id=<span class="hljs-string">"cpn1"</span>&gt;
+   &lt;div&gt;
+       &lt;h2&gt;组件模板的分离写法&lt;<span class="hljs-regexp">/h2&gt;</span>
+<span class="hljs-regexp">       &lt;p&gt;script标签注意类型是text/</span>x-template&lt;<span class="hljs-regexp">/p&gt;</span>
+<span class="hljs-regexp">     &lt;/</span>div&gt;
+ &lt;<span class="hljs-regexp">/script&gt;</span></code></pre>
+<h2 id="🚩-template标签"><a href="#🚩-template标签" class="headerlink" title="🚩  template标签"></a>🚩  template标签</h2><p>🔺  使用<code>template</code>标签，将内容写在标签内。</p>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 2.template标签 --&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"cpn2"</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>组件模板的分离写法<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>template标签<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></code></pre>
+<p>🔺  调用分离的模板，使用<code>template:&#39;#cpn1&#39;</code></p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>  <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+
+<span class="actionscript">   <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">     el: <span class="hljs-string">"#app"</span>,</span>
+<span class="actionscript">     components: &#123; <span class="hljs-comment">//局部组件创建</span></span>
+       cpn1:&#123;
+<span class="actionscript">         template:<span class="hljs-string">'#cpn1'</span></span>
+       &#125;,
+       cpn2: &#123;
+<span class="actionscript">         template: <span class="hljs-string">'#cpn2'</span></span>
+       &#125;
+     &#125;
+   &#125;)
+ <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<h2 id="🚩-组件的数据"><a href="#🚩-组件的数据" class="headerlink" title="🚩  组件的数据"></a>🚩  组件的数据</h2><p>🔺  前面说过<code>vue</code>组件就是一个<code>vue</code>实例，相应的<code>vue</code>组件也有<code>data</code>属性来存放数据。</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">cpn1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn1</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+ <span class="hljs-tag">&lt;<span class="hljs-name">script</span>  <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+
+<span class="actionscript">   <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">     el: <span class="hljs-string">"#app"</span>,</span>
+<span class="actionscript">     components: &#123; <span class="hljs-comment">//局部组件创建</span></span>
+       cpn1:&#123;
+<span class="handlebars"><span class="xml">         template:'<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;msg&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>',</span></span>
+         data()&#123;
+<span class="actionscript">           <span class="hljs-keyword">return</span> &#123;</span>
+<span class="actionscript">             msg:<span class="hljs-string">"组件的数据存放必须要是一个函数"</span></span>
+           &#125;
+         &#125;
+       &#125;
+     &#125;
+   &#125;)
+ <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>👩注意👩: 在<code>template</code>中使用组件内部的数据<code>msg</code>。</p>
+<h2 id="🚩-组件的data为什么必须要是函数"><a href="#🚩-组件的data为什么必须要是函数" class="headerlink" title="🚩  组件的data为什么必须要是函数"></a>🚩  组件的data为什么必须要是函数</h2><p>🔺  组件的思想是复用，定义组件当然是把通用的公共的东西抽出来复用。</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>data不使用函数<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>data使用函数<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn2</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn2</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>  <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"cpn1"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"count--"</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      当前计数：&#123;&#123;count&#125;&#125;
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"count++"</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"cpn2"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"count--"</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      当前计数：&#123;&#123;count&#125;&#125;
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"count++"</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-keyword">const</span> obj = &#123;</span>
+      count:0
+    &#125;;
+<span class="actionscript">    <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">      el: <span class="hljs-string">"#app"</span>,</span>
+<span class="actionscript">      components: &#123; <span class="hljs-comment">//局部组件创建</span></span>
+        cpn1: &#123;
+<span class="actionscript">          template: <span class="hljs-string">'#cpn1'</span>,</span>
+          data() &#123;
+<span class="actionscript">            <span class="hljs-keyword">return</span> obj;</span>
+          &#125;
+        &#125;,
+        cpn2: &#123;
+<span class="actionscript">          template: <span class="hljs-string">'#cpn2'</span>,</span>
+          data() &#123;
+<span class="actionscript">            <span class="hljs-keyword">return</span> &#123;</span>
+              count: 0
+            &#125;
+          &#125;
+        &#125;
+      &#125;
+    &#125;)
+  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>👩注意👩: 上述代码中定义了两个组件<code>cpn1</code>和<code>cpn2</code>，都是定义了两个计数器，<code>con1</code>的data虽然使用了函数，但是为了模拟<code>data:{count:0}</code>，使用了常量<code>obj</code>来返回<code>count</code>。不使用<code>data</code>的好像共用一个<code>count</code>属性，而使用函数的<code>data</code>的<code>count</code>是各自用各自的，像局部变量一样有块级作用域，这个块级就是<code>vue</code>组件的作用域。我们在复用组件的时候肯定希望，各自组件用各自的变量，如果确实需要都用一样的，可以全局组件注册，也可以是用<code>vuex</code>来进行状态管理。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/05/vue10/">
+                        <span class="hidden-mobile">vue10</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
+
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
+      new Valine({
+        el: "#vcomments",
+        app_id: "FgPR1XXuEWCbs2UYAySwbsl3-gzGzoHsz",
+        app_key: "NV6MprxzmQELSYm3ML3ktD1A",
+        placeholder: "说点什么",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
+        pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
+      });
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+    <div class="text-center py-3">
+        <div>
+            <a href="https://github.com/oyeah-hua" target="_blank" rel="nofollow noopener"><span>Github</span></a>
+            <i class="iconfont icon-love"></i>
+            <a href="https://mp.weixin.qq.com/s/J6kOgeGzqJQAMuFwjmrWNg" target="_blank" rel="nofollow noopener">
+                <span>Wechat</span></a>
+        </div>
+
+
+        
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+            
+
+                
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "vue11&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
