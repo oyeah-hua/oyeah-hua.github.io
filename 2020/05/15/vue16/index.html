@@ -145,7 +145,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.6k 字
+                    1.7k 字
                   </span>
                 
 
@@ -185,6 +185,9 @@
             
             <article class="markdown-body">
               <h1 id="（十六）Vue实例的生命周期"><a href="#（十六）Vue实例的生命周期" class="headerlink" title="（十六）Vue实例的生命周期"></a>（十六）Vue实例的生命周期</h1><p>🔺 <code>Vue</code>实例的生命周期中有多个状态。</p>
+<p>如图为生命周期示意图：</p>
+<p><img style="width: 1000px;border-radius:5px;box-shadow:0px 0px 10px  #58585d" src="https://imgkr.cn-bj.ufileos.com/9b87ce46-ebc8-4c64-86bb-8ff1c87ffd12.png" srcset="/img/loading.gif"></p>
+<p>下面为使用案例：</p>
 <pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
@@ -241,6 +244,8 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<p>如图所示：</p>
+<p><img style="width: 1000px;border-radius:5px;box-shadow:0px 0px 10px  #58585d" src="https://imgkr.cn-bj.ufileos.com/afbbcb97-e9e5-496d-a5b5-38aa278e9365.png" srcset="/img/loading.gif"></p>
 <p>初始化页面依次调用了：</p>
 <ol>
 <li><p>调用了<code>beforeCreate</code>钩子函数</p>
@@ -273,6 +278,7 @@
 <p>在<code>beforeCreate</code>和<code>created</code>之间，进行数据观测<code>(data observer)</code>，也就是在这个时候开始监控<code>data</code>中的数据变化了，同时初始化事件。</p>
 <p>  🔺 <code>created</code>钩子函数和<code>beforeMount</code>间的生命周期</p>
 <p>对于<code>created</code>钩子函数和<code>beforeMount</code>有判断：</p>
+<p><img style="width: 1000px;border-radius:5px;box-shadow:0px 0px 10px  #58585d" src="https://imgkr.cn-bj.ufileos.com/2ced2b8f-fda0-4023-bbe1-5d0cc24991d6.png" srcset="/img/loading.gif"></p>
 <p> 🔺 <code>el</code>选项对生命周期影响</p>
 <ol>
 <li>有<code>el</code>选项</li>
@@ -292,6 +298,8 @@
             <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了mounted钩子函数'</span>)
         &#125;
     &#125;)</code></pre>
+<p>结果如图所示：</p>
+<p><img style="width: 1000px;border-radius:5px;box-shadow:0px 0px 10px  #58585d" src="https://imgkr.cn-bj.ufileos.com/4092c8b8-c2aa-4650-ad48-86232dc9320a.png" srcset="/img/loading.gif"></p>
 <ol>
 <li>无<code>el</code>选项</li>
 </ol>
@@ -309,6 +317,8 @@
             <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了mounted钩子函数'</span>)
         &#125;
     &#125;)</code></pre>
+<p>结果如图所示：</p>
+<p><img style="width: 1000px;border-radius:5px;box-shadow:0px 0px 10px  #58585d" src="https://imgkr.cn-bj.ufileos.com/b86b1ea1-8cc8-4043-871e-8759904abd1f.png" srcset="/img/loading.gif"></p>
 <p>证明没有<code>el</code>选项，则停止编译，也意味着暂时停止了生命周期。生命周期到<code>created</code>钩子函数就结束了。而当我们不加<code>el</code>选项，但是手动执行<code>vm.$mount(el)</code>方法的话，也能够使暂停的生命周期进行下去，例如：</p>
 <pre><code class="hljs javascript"><span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue(&#123;
         beforeCreate: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
@@ -340,6 +350,8 @@
 <span class="handlebars"><span class="xml">                template:"<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;msg&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>",</span></span>
             &#125;);
         <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>结果如图所示：</p>
+<p><img style="width: 1000px;border-radius:5px;box-shadow:0px 0px 10px  #58585d" src="https://imgkr.cn-bj.ufileos.com/e365b880-b276-43a1-ae7f-85db0f140d74.png" srcset="/img/loading.gif"></p>
 <p>👩结论👩: </p>
 <ol>
 <li><p>如果<code>Vue</code>实例对象中有<code>template</code>参数选项，则将其作为模板编译成<code>render</code>函数</p>
@@ -369,6 +381,7 @@
 <p>载入后<code>html</code>已经渲染(<code>ajax</code>请求可以放在这个函数中)，把<code>vue</code>实例中的<code>data</code>里的<code>message</code>挂载到DOM节点中去</p>
 <p>这里两个钩子函数间是载入数据。</p>
 <p>🔺<code>beforeUpdate</code>钩子函数和<code>updated</code>钩子函数间的生命周期</p>
+<p><img style="width: 1000px;border-radius:5px;box-shadow:0px 0px 10px  #58585d" src="https://imgkr.cn-bj.ufileos.com/b2c19916-8922-45c0-8164-900914506fcf.png" srcset="/img/loading.gif"></p>
 <p>在<code>Vue</code>中，修改数据会导致重新渲染，依次调用<code>beforeUpdate</code>钩子函数和<code>updated</code>钩子函数.</p>
 <p>如果待修改的数据没有载入模板中，不会调用这里两个钩子函数：</p>
 <pre><code class="hljs javascript"><span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue(&#123;
@@ -385,9 +398,10 @@
         &#125;
     &#125;)
     app.msg = <span class="hljs-number">2</span></code></pre>
+<p>结果如图所示：</p>
+<p><img style="width: 1000px;border-radius:5px;box-shadow:0px 0px 10px  #58585d" src="https://imgkr.cn-bj.ufileos.com/b2a7bc6e-10cf-4a34-8487-9a071325c2f8.png" srcset="/img/loading.gif"></p>
 <p>如果绑定了数据，会调用两个钩子函数：</p>
-<pre><code class="hljs html">
-<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>测试有数据绑定修改数据，钩子函数调用情况<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>测试有数据绑定修改数据，钩子函数调用情况<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
@@ -406,8 +420,11 @@
     &#125;);
 <span class="actionscript">    app.msg = <span class="hljs-string">"数据被修改了"</span>;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>结果如图所示：</p>
+<p><img style="width: 1000px;border-radius:5px;box-shadow:0px 0px 10px  #58585d" src="https://imgkr.cn-bj.ufileos.com/512570da-c0c9-45dd-bc12-5c33078e2107.png" srcset="/img/loading.gif"></p>
 <p>👩注意👩:  只有写入模板的数据才会被追踪</p>
 <p>🔺 <code>beforeDestroy</code>和<code>destroyed</code>钩子函数间的生命周期</p>
+<p><img style="width: 1000px;border-radius:5px;box-shadow:0px 0px 10px  #58585d" src="https://imgkr.cn-bj.ufileos.com/5a1572c3-1c09-4f20-8878-3f4a8fa5ee78.png" srcset="/img/loading.gif"></p>
 <p>🔺  <code>beforeDestroy</code></p>
 <p>销毁前执行（<code>$destroy</code>方法被调用的时候就会执行）,一般在这里善后:清除计时器、清除非指令绑定的事件等等…’)</p>
 <p>🔺  <code>destroyed</code></p>
