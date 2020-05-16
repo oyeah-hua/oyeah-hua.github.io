@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>vue 笔记整理16 - oyeah</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>oyeah's workspace</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('https://ae01.alicdn.com/kf/Hc16b03c93061485585446a3581565b792.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-15 21:48">
+                    星期五, 五月 15日 2020, 9:48 晚上
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.6k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    21
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="（十六）Vue实例的生命周期"><a href="#（十六）Vue实例的生命周期" class="headerlink" title="（十六）Vue实例的生命周期"></a>（十六）Vue实例的生命周期</h1><p>🔺 <code>Vue</code>实例的生命周期中有多个状态。</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Vue实例的生命周期<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- 引入vue.js --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>  <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>测试生命周期<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>测试beforeUpdate和update两个钩子函数<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"handlerUpdate"</span>&gt;</span>更新数据<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">        <span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">            el:<span class="hljs-string">"#app"</span>,</span>
+            data:&#123;
+<span class="actionscript">                msg:<span class="hljs-string">"12345"</span></span>
+            &#125;,
+            methods: &#123;
+<span class="actionscript">                handlerUpdate:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span>
+<span class="actionscript">                    <span class="hljs-keyword">this</span>.msg=<span class="hljs-keyword">this</span>.msg.split(<span class="hljs-string">""</span>).reverse().join(<span class="hljs-string">""</span>);</span>
+                &#125;,
+<span class="actionscript">            &#125;,<span class="hljs-comment">//按照示意图依次调用</span></span>
+<span class="actionscript">            beforeCreate:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span>
+<span class="javascript">                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"调用了beforeCreate钩子函数"</span>);</span>
+            &#125;,
+<span class="actionscript">            created:<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"调用了created钩子函数"</span>);</span>
+            &#125;,
+<span class="actionscript">            beforeMount: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了beforeMount钩子函数'</span>)</span>
+            &#125;,
+<span class="actionscript">            mounted: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了mounted钩子函数'</span>)</span>
+            &#125;,
+<span class="actionscript">            beforeUpdate: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"调用了beforeUpdate钩子函数"</span>)</span>
+            &#125;,
+<span class="actionscript">            updated: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"调用了updated钩子函数"</span>);</span>
+            &#125;,
+<span class="actionscript">            beforeDestroy: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"调用了beforeDestroy钩子函数"</span>)</span>
+            &#125;,
+<span class="actionscript">            destroyed: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"调用了destroyed钩子函数"</span>);</span>
+            &#125;,
+        &#125;);
+    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<p>初始化页面依次调用了：</p>
+<ol>
+<li><p>调用了<code>beforeCreate</code>钩子函数</p>
+</li>
+<li><p>调用了<code>created</code>钩子函数</p>
+</li>
+<li><p>调用了<code>beforeMount</code>钩子函数</p>
+</li>
+<li><p>调用了<code>mounted</code>钩子函数</p>
+</li>
+</ol>
+<p>点击更新数据后：<code>12345</code>变成了<code>54321</code>，此时调用了：</p>
+<ol>
+<li><p>调用了<code>beforeUpdate</code>钩子函数</p>
+</li>
+<li><p>调用了<code>updated</code>钩子函数</p>
+</li>
+</ol>
+<p>打开<code>F12</code>控制台</p>
+<p>直接输入<code>app.$destroy()</code>主动销毁<code>Vue</code>实例调用：</p>
+<ol>
+<li><p>调用了<code>beforeDestroy</code>钩子函数</p>
+</li>
+<li><p>调用了<code>destroyed</code>钩子函数</p>
+</li>
+</ol>
+<p>🔺 <code>beforeCreate</code>之前</p>
+<p>初始化钩子函数和生命周期</p>
+<p> 🔺 <code>beforeCreate</code>和<code>created</code>钩子函数间的生命周期</p>
+<p>在<code>beforeCreate</code>和<code>created</code>之间，进行数据观测<code>(data observer)</code>，也就是在这个时候开始监控<code>data</code>中的数据变化了，同时初始化事件。</p>
+<p>  🔺 <code>created</code>钩子函数和<code>beforeMount</code>间的生命周期</p>
+<p>对于<code>created</code>钩子函数和<code>beforeMount</code>有判断：</p>
+<p> 🔺 <code>el</code>选项对生命周期影响</p>
+<ol>
+<li>有<code>el</code>选项</li>
+</ol>
+<pre><code class="hljs javascript"><span class="hljs-keyword">new</span> Vue(&#123;
+        el: <span class="hljs-string">'#app'</span>,
+        beforeCreate: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了beforeCreat钩子函数'</span>)
+        &#125;,
+        created: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了created钩子函数'</span>)
+        &#125;,
+        beforeMount: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了beforeMount钩子函数'</span>)
+        &#125;,
+        mounted: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了mounted钩子函数'</span>)
+        &#125;
+    &#125;)</code></pre>
+<ol>
+<li>无<code>el</code>选项</li>
+</ol>
+<pre><code class="hljs javascript"><span class="hljs-keyword">new</span> Vue(&#123;
+        beforeCreate: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了beforeCreat钩子函数'</span>)
+        &#125;,
+        created: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了created钩子函数'</span>)
+        &#125;,
+        beforeMount: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了beforeMount钩子函数'</span>)
+        &#125;,
+        mounted: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了mounted钩子函数'</span>)
+        &#125;
+    &#125;)</code></pre>
+<p>证明没有<code>el</code>选项，则停止编译，也意味着暂时停止了生命周期。生命周期到<code>created</code>钩子函数就结束了。而当我们不加<code>el</code>选项，但是手动执行<code>vm.$mount(el)</code>方法的话，也能够使暂停的生命周期进行下去，例如：</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue(&#123;
+        beforeCreate: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了beforeCreat钩子函数'</span>)
+        &#125;,
+        created: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了created钩子函数'</span>)
+        &#125;,
+        beforeMount: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了beforeMount钩子函数'</span>)
+        &#125;,
+        mounted: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了mounted钩子函数'</span>)
+        &#125;
+    &#125;)
+    app.$mount(<span class="hljs-string">'#app'</span>)</code></pre>
+<p>🔺 <code>template</code></p>
+<p>同时使用<code>template</code>和<code>HTML</code>，查看优先级：</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>测试template和HTML的优先级<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>HTML优先<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">            <span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">                el:<span class="hljs-string">"#app"</span>,</span>
+                data:&#123;
+<span class="actionscript">                    msg:<span class="hljs-string">"template优先"</span></span>
+                &#125;,
+<span class="handlebars"><span class="xml">                template:"<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;msg&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>",</span></span>
+            &#125;);
+        <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>👩结论👩: </p>
+<ol>
+<li><p>如果<code>Vue</code>实例对象中有<code>template</code>参数选项，则将其作为模板编译成<code>render</code>函数</p>
+</li>
+<li><p>如果没有<code>template</code>参数选项，则将外部的<code>HTML</code>作为模板编译<code>（template）</code>，也就是说，<code>template</code>参数选项的优先级要比外部的<code>HTML</code>高</p>
+</li>
+<li><p>如果1,2条件都不具备，则报错</p>
+</li>
+</ol>
+<p>👩注意👩: </p>
+<ol>
+<li><p><code>Vue</code>需要通过<code>el</code>去找对应的<code>template</code>，<code>Vue</code>实例通过<code>el</code>的参数，首先找自己有没有<code>template</code>，如果没有再去找外部的<code>html</code>，找到后将其编译成render函数。</p>
+</li>
+<li><p>也可以直接调用<a href="https://cn.vuejs.org/v2/api/#render" target="_blank" rel="noopener">render</a>选项，优先级：<code>render函数选项 &gt; template参数 &gt; 外部HTML</code>。</p>
+</li>
+</ol>
+<pre><code class="hljs javascript"><span class="hljs-keyword">new</span> Vue(&#123;
+    el: <span class="hljs-string">'#app'</span>,
+    render (createElement) &#123;
+        <span class="hljs-keyword">return</span> (....)
+    &#125;
+&#125;)</code></pre>
+<p>🔺  <code>beforeMount</code>和<code>mounted</code>钩子函数间的生命周期</p>
+<p><code>beforeMount</code></p>
+<p>载入前（完成了<code>data</code>和<code>el</code>数据初始化），但是页面中的内容还是<code>Vue</code>中的占位符，<code>data</code>中的<code>message</code>信息没有被挂在到Dom节点中，在这里可以在渲染前最后一次更改数据的机会，不会触发其他的钩子函数，一般可以在这里做初始数据的获取。</p>
+<p><code>Mount</code></p>
+<p>载入后<code>html</code>已经渲染(<code>ajax</code>请求可以放在这个函数中)，把<code>vue</code>实例中的<code>data</code>里的<code>message</code>挂载到DOM节点中去</p>
+<p>这里两个钩子函数间是载入数据。</p>
+<p>🔺<code>beforeUpdate</code>钩子函数和<code>updated</code>钩子函数间的生命周期</p>
+<p>在<code>Vue</code>中，修改数据会导致重新渲染，依次调用<code>beforeUpdate</code>钩子函数和<code>updated</code>钩子函数.</p>
+<p>如果待修改的数据没有载入模板中，不会调用这里两个钩子函数：</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue(&#123;
+        el: <span class="hljs-string">'#app'</span>,
+        data: &#123;
+            msg: <span class="hljs-number">1</span>
+        &#125;,
+        template: <span class="hljs-string">'&lt;div id="app"&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;'</span>,
+        beforeUpdate: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了beforeUpdate钩子函数'</span>)
+        &#125;,
+        updated: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'调用了updated钩子函数'</span>)
+        &#125;
+    &#125;)
+    app.msg = <span class="hljs-number">2</span></code></pre>
+<p>如果绑定了数据，会调用两个钩子函数：</p>
+<pre><code class="hljs html">
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>测试有数据绑定修改数据，钩子函数调用情况<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">        el:<span class="hljs-string">"#app"</span>,</span>
+<span class="handlebars"><span class="xml">        template:"<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;msg&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>",</span></span>
+        data:&#123;
+<span class="actionscript">            msg:<span class="hljs-string">"原数据"</span></span>
+        &#125;,
+<span class="actionscript">        beforeUpdate: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"调用了beforeUpdate钩子函数"</span>)</span>
+        &#125;,
+<span class="actionscript">        updated: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"调用了updated钩子函数"</span>);</span>
+        &#125;,
+    &#125;);
+<span class="actionscript">    app.msg = <span class="hljs-string">"数据被修改了"</span>;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>👩注意👩:  只有写入模板的数据才会被追踪</p>
+<p>🔺 <code>beforeDestroy</code>和<code>destroyed</code>钩子函数间的生命周期</p>
+<p>🔺  <code>beforeDestroy</code></p>
+<p>销毁前执行（<code>$destroy</code>方法被调用的时候就会执行）,一般在这里善后:清除计时器、清除非指令绑定的事件等等…’)</p>
+<p>🔺  <code>destroyed</code></p>
+<p>销毁后 （Dom元素存在，只是不再受<code>Vue</code>控制）,卸载<code>watcher</code>，事件监听，子组件</p>
+<p>👩总结👩: </p>
+<ul>
+<li><p><code>beforecreate</code> : 可以在这加个<code>loading</code>事件</p>
+</li>
+<li><p><code>created</code>：在这结束<code>loading</code>，还做一些初始数据的获取，实现函数自-执行</p>
+</li>
+<li><p><code>mounted</code>： 在这发起后端请求，拿回数据，配合路由钩子做一些事情</p>
+</li>
+<li><p><code>beforeDestroy</code>： 你确认删除XX吗？</p>
+</li>
+<li><p><code>destroyed</code>：当前组件已被删除，清空相关内容</p>
+</li>
+</ul>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/16/vue17/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vue 笔记整理17</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/10/vue15/">
+                        <span class="hidden-mobile">vue15</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
+
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
+      new Valine({
+        el: "#vcomments",
+        app_id: "FgPR1XXuEWCbs2UYAySwbsl3-gzGzoHsz",
+        app_key: "NV6MprxzmQELSYm3ML3ktD1A",
+        placeholder: "说点什么",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
+        pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
+      });
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+    <div class="text-center py-3">
+        <div>
+            <a href="https://github.com/oyeah-hua" target="_blank" rel="nofollow noopener"><span>Github</span></a>
+            <i class="iconfont icon-love"></i>
+            <a href="https://mp.weixin.qq.com/s/J6kOgeGzqJQAMuFwjmrWNg" target="_blank" rel="nofollow noopener">
+                <span>Wechat</span></a>
+        </div>
+
+
+        
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+            
+
+                
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "vue 笔记整理16&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

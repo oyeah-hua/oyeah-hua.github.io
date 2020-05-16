@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>vue 笔记整理12 - oyeah</title>
+  <title>vue15 - oyeah</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -134,8 +134,8 @@
               
                 <div class="mt-3 post-meta">
                   <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-05-07 19:17">
-                    星期四, 五月 7日 2020, 7:17 晚上
+                  <time datetime="2020-05-10 23:06">
+                    星期日, 五月 10日 2020, 11:06 晚上
                   </time>
                 </div>
               
@@ -145,7 +145,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    658 字
+                    1.5k 字
                   </span>
                 
 
@@ -155,7 +155,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    9
+                    20
                      分钟
                   </span>
                 
@@ -184,147 +184,159 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="（十二）父组件向子组件传递数据"><a href="#（十二）父组件向子组件传递数据" class="headerlink" title="（十二）父组件向子组件传递数据"></a>（十二）父组件向子组件传递数据</h1><h2 id="🚩-父组件如何向子组件传递数据？"><a href="#🚩-父组件如何向子组件传递数据？" class="headerlink" title="🚩 父组件如何向子组件传递数据？"></a>🚩 父组件如何向子组件传递数据？</h2><p>🔺 使用<code>props</code>属性</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> cpn = &#123;
-  template: <span class="hljs-string">"#cpn"</span>,
-  props: &#123; 
-          cmessage: &#123;
-          type: <span class="hljs-built_in">String</span>,
-          <span class="hljs-keyword">default</span>: <span class="hljs-string">'zzzzz'</span>,
-          required: <span class="hljs-literal">true</span> <span class="hljs-comment">//在使用组件必传值</span>
-          &#125;
-  &#125;
-&#125;</code></pre>
-<p>🔺  向<code>cmessage</code>对象传值</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">cpn</span> <span class="hljs-attr">:cMessage</span>=<span class="hljs-string">"message"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>    
-<span class="actionscript"><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">      el: <span class="hljs-string">"#app"</span>,</span>
-      data: &#123;
-<span class="actionscript">        message: <span class="hljs-string">"你好"</span>,</span>
-<span class="actionscript">        movies: [<span class="hljs-string">"复仇者联盟"</span>, <span class="hljs-string">"钢铁侠"</span>, <span class="hljs-string">"星际穿越"</span>, <span class="hljs-string">"哪吒传奇"</span>]</span>
-      &#125;,
-      components: &#123;
-        cpn
-      &#125;
-    &#125;)
-  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-<h2 id="🚩-props属性使用"><a href="#🚩-props属性使用" class="headerlink" title="🚩  props属性使用"></a>🚩  props属性使用</h2><p>🔺 数组写法</p>
-<pre><code class="hljs javascript">props: [<span class="hljs-string">'cmovies'</span>, <span class="hljs-string">'cmessage'</span>]</code></pre>
-<p>🔺 对象写法</p>
-<pre><code class="hljs javascript">props: &#123; 
-         cmessage: &#123;
-         type: <span class="hljs-built_in">String</span>,
-         <span class="hljs-keyword">default</span>: <span class="hljs-string">'zzzzz'</span>,
-         required: <span class="hljs-literal">true</span> <span class="hljs-comment">//在使用组件必传值</span>
-         &#125;
- &#125;</code></pre>
-<p>🔺 <code>props</code>属性的类型限制</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">//1.类型限制(多个类使用数组)</span>
-cmovies:<span class="hljs-built_in">Array</span>,<span class="hljs-comment">//限制为数组类型</span>
-cmessage:<span class="hljs-built_in">String</span>,<span class="hljs-comment">//限制为Strin类型</span>
-cmessage:[<span class="hljs-string">'String'</span>,<span class="hljs-string">'Number'</span>]<span class="hljs-comment">//限制为String或Number类型</span></code></pre>
-<p>🔺  <code>props</code>属性的默认值</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">//2.提供一些默认值，以及必传值</span>
-        cmessage: &#123;
-          type: <span class="hljs-built_in">String</span>,
-          <span class="hljs-keyword">default</span>: <span class="hljs-string">'zzzzz'</span>,<span class="hljs-comment">//默认值</span>
-        &#125;</code></pre>
-<p>🔺  <code>props</code>属性的必传值</p>
-<pre><code class="hljs javascript">cmessage: &#123;
-          type: <span class="hljs-built_in">String</span>,
-          <span class="hljs-keyword">default</span>: <span class="hljs-string">'zzzzz'</span>,
-          required: <span class="hljs-literal">true</span> <span class="hljs-comment">//在使用组件必传值</span>
-        &#125;</code></pre>
-<p>🔺 类型是<code>Object/Array</code>，默认值必须是一个函数</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">//类型是Object/Array，默认值必须是一个函数</span>
-cmovies: &#123;
-	type: <span class="hljs-built_in">Array</span>,
-	<span class="hljs-keyword">default</span> () &#123;
-		<span class="hljs-keyword">return</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]
-	&#125;
-&#125;,</code></pre>
-<p>🔺  自定义验证函数</p>
-<pre><code class="hljs javascript">vaildator: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) </span>&#123;
-	<span class="hljs-comment">//这个传递的值必须匹配下列字符串中的一个</span>
-	<span class="hljs-keyword">return</span> [<span class="hljs-string">'zzzzz'</span>, <span class="hljs-string">'ttttt'</span>, <span class="hljs-string">'yyy'</span>].indexOf(value) !== <span class="hljs-number">-1</span>
-&#125;</code></pre>
-<p>🔺 自定义类型</p>
-<pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">firstName,lastName</span>) </span>&#123;
-     <span class="hljs-keyword">this</span>.firstName = firstName
-     <span class="hljs-keyword">this</span>.lastName = lastName
-   &#125;
-cmessage:Person<span class="hljs-comment">//限定了cmeessage必须是Person类型</span></code></pre>
-<p> 🔺  综合使用</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">cpn</span> <span class="hljs-attr">:cMovies</span>=<span class="hljs-string">"movies"</span> <span class="hljs-attr">:cMessage</span>=<span class="hljs-string">"message"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span>
+              <h1 id="（十五）插槽使用"><a href="#（十五）插槽使用" class="headerlink" title="（十五）插槽使用"></a>（十五）插槽使用</h1><p>🔺 <code>slot</code>翻译为插槽</p>
+<p> 在生活中很多地方都有插槽，电脑的<code>USB</code>插槽，插板当中的电源插槽。插槽的目的是让我们原来的设备具备更多的扩展性。比如电脑的<code>USB</code>我们可以插入U盘、硬盘、手机、音响、键盘、鼠标等等。</p>
+<p>🔺 组件的插槽</p>
+<p> 组件的插槽也是为了让我们封装的组件更加具有扩展性。让使用者可以决定组件内部的一些内容到底展示什么。例子：移动网站中的导航栏。移动开发中，几乎每个页面都有导航栏。导航栏我们必然会封装成一个插件，比如<code>nav-bar</code>组件。一旦有了这个组件，我们就可以在多个页面中复用了。但是，每个页面的导航是一样的吗？No.</p>
+<p>🔺 如何去封装这类的组件呢？</p>
+<p>它们也很多区别，但是也有很多共性。如果，我们每一个单独去封装一个组件，显然不合适：比如每个页面都返回，这部分内容我们就要重复去封装。但是，如果我们封装成一个，好像也不合理：有些左侧是菜单，有些是返回，有些中间是搜索，有些是文字，等等。</p>
+<p>🔺 如何封装合适呢？</p>
+<p>抽取共性，保留不同。最好的封装方式就是将共性抽取到组件中，将不同暴露为插槽。一旦我们预留了插槽，就可以让使用者根据自己的需求，决定插槽中插入什么内容。是搜索框，还是文字，还是菜单。由调用者自己来决定。这就是为什么我们要学习组件中的插槽slot的原因。</p>
+<h2 id="🚩-slot-插槽的基本使用"><a href="#🚩-slot-插槽的基本使用" class="headerlink" title="🚩  slot-插槽的基本使用"></a>🚩  slot-插槽的基本使用</h2><p>🔺 我们在使用组件的时候有时候希望，在组件内部定制化内容，例如京东的导航。组件的思想是可以复用的，把这个导航栏看做一个组件。这个组件都可以分成三个部分，左边中间右边，如果可以分割组件，就可以定制化组件内容了。</p>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 父组件 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color:red;"</span>&gt;</span>这是插槽内容222<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color:red;"</span>&gt;</span>这是插槽内容333<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span>
+
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- 插槽的基本使用使用&lt;slot&gt;&lt;/slot&gt; --&gt;</span>
+  <span class="hljs-comment">&lt;!-- 子组件 --&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"cpn"</span>&gt;</span>
+
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(item, index) in cmovies"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;cmessage&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        &#123;&#123;message&#125;&#125;
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- 插槽默认值 --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>  <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span><span class="hljs-params">(firstName,lastName)</span> </span>&#123;</span>
-<span class="actionscript">      <span class="hljs-keyword">this</span>.firstName = firstName</span>
-<span class="actionscript">      <span class="hljs-keyword">this</span>.lastName = lastName</span>
-    &#125;
-<span class="actionscript">    <span class="hljs-comment">// 父传子：props</span></span>
 <span class="actionscript">    <span class="hljs-keyword">const</span> cpn = &#123;</span>
 <span class="actionscript">      template: <span class="hljs-string">"#cpn"</span>,</span>
-<span class="actionscript">      <span class="hljs-comment">// props: ['cmovies', 'cmessage'],//数组写法</span></span>
-<span class="actionscript">      props: &#123; <span class="hljs-comment">//对象写法</span></span>
-<span class="actionscript">        <span class="hljs-comment">// 1.类型限制(多个类使用数组)</span></span>
-<span class="actionscript">        <span class="hljs-comment">// cmovies:Array,</span></span>
-<span class="actionscript">        <span class="hljs-comment">// cmessage:String,</span></span>
-<span class="actionscript">        <span class="hljs-comment">// cmessage:['String','Number'],</span></span>
-<span class="actionscript">        <span class="hljs-comment">// 2.提供一些默认值，以及必传值</span></span>
-        cmessage: &#123;
-<span class="javascript">          type: <span class="hljs-built_in">String</span>,</span>
-<span class="actionscript">          <span class="hljs-keyword">default</span>: <span class="hljs-string">'zzzzz'</span>,</span>
-<span class="actionscript">          required: <span class="hljs-literal">true</span> <span class="hljs-comment">//在使用组件必传值</span></span>
-        &#125;,
-<span class="actionscript">        <span class="hljs-comment">//类型是Object/Array，默认值必须是一个函数</span></span>
-        cmovies: &#123;
-<span class="javascript">          type: <span class="hljs-built_in">Array</span>,</span>
-<span class="actionscript">          <span class="hljs-keyword">default</span> () &#123;</span>
-<span class="actionscript">            <span class="hljs-keyword">return</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]</span>
-          &#125;
-        &#125;,
-<span class="actionscript">        <span class="hljs-comment">// 3.自定义验证函数</span></span>
-<span class="actionscript">        <span class="hljs-comment">// vaildator: function (value) &#123;</span></span>
-<span class="actionscript">        <span class="hljs-comment">//   //这个传递的值必须匹配下列字符串中的一个</span></span>
-<span class="actionscript">        <span class="hljs-comment">//   return ['zzzzz', 'ttttt', 'yyy'].indexOf(value) !== -1</span></span>
-<span class="actionscript">        <span class="hljs-comment">// &#125;</span></span>
-<span class="actionscript">        <span class="hljs-comment">// 4.自定义类型</span></span>
-<span class="actionscript">        <span class="hljs-comment">// cmessage:Person,</span></span>
-      &#125;,
       data() &#123;
 <span class="actionscript">        <span class="hljs-keyword">return</span> &#123;</span>
+<span class="actionscript">          message: <span class="hljs-string">"我是子组件"</span></span>
         &#125;
       &#125;,
-      methods: &#123;
-
-      &#125;,
-    &#125;;
+    &#125;
 <span class="actionscript">    <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
 <span class="actionscript">      el: <span class="hljs-string">"#app"</span>,</span>
-      data: &#123;
-<span class="actionscript">        message: <span class="hljs-string">"你好"</span>,</span>
-<span class="actionscript">        movies: [<span class="hljs-string">"复仇者联盟"</span>, <span class="hljs-string">"钢铁侠"</span>, <span class="hljs-string">"星际穿越"</span>, <span class="hljs-string">"哪吒传奇"</span>]</span>
+      data() &#123;
+<span class="actionscript">        <span class="hljs-keyword">return</span> &#123;</span>
+<span class="actionscript">          message: <span class="hljs-string">"我是父组件消息"</span></span>
+        &#125;
       &#125;,
       components: &#123;
         cpn
-      &#125;
+      &#125;,
     &#125;)
   <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>🔺  简单使用插槽，定义<code>template</code>时候使用<code>slot</code></p>
+<pre><code class="hljs javascript">&lt;!-- 子组件 --&gt;
+  &lt;template id=<span class="hljs-string">"cpn"</span>&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &#123;&#123;message&#125;&#125;
+      &lt;<span class="hljs-regexp">/div&gt;</span>
+<span class="hljs-regexp">      &lt;!-- 插槽默认值 --&gt;</span>
+<span class="hljs-regexp">      &lt;slot&gt;&lt;button&gt;button&lt;/</span>button&gt;&lt;<span class="hljs-regexp">/slot&gt;</span>
+<span class="hljs-regexp">    &lt;/</span>div&gt;
+  &lt;<span class="hljs-regexp">/template&gt;</span></code></pre>
+<p>🔺 插槽可以使用默认值，<code>&lt;button&gt;button&lt;/button&gt;</code>就是插槽的默认值。</p>
+<pre><code class="hljs javascript">&lt;cpn&gt;&lt;<span class="hljs-regexp">/cpn&gt;</span>
+<span class="hljs-regexp">&lt;cpn&gt;&lt;span style="color:red;"&gt;这是插槽内容222&lt;/</span>span&gt;&lt;<span class="hljs-regexp">/cpn&gt;</span></code></pre>
+<p>👩注意👩:  使用插槽，<code>&lt;span style=&quot;color:red;&quot;&gt;这是插槽内容222&lt;/span&gt;</code>将替换插槽的默认值。替换了两次插槽，两次未替换显示默认的<code>button</code>。如果想实现组件分成三部分就可以使用三个<code>&lt;slot&gt;&lt;/slot&gt;</code>来填充插槽了。</p>
+<h2 id="🚩-slot-具名插槽的使用"><a href="#🚩-slot-具名插槽的使用" class="headerlink" title="🚩  slot-具名插槽的使用"></a>🚩  slot-具名插槽的使用</h2><p>🔺 具名插槽，就是可以让插槽按指定的顺序填充，而没有具名的插槽是按照你填充的顺序排列的，而具名插槽可以自定义排列。</p>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 父组件 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>没具名<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">"left"</span>&gt;</span>这是左边具名插槽<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- 新语法 --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-slot:center</span>&gt;</span>这是中间具名插槽<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- 新语法缩写 --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">right</span>&gt;</span>这是右边具名插槽<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span>
+
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- 插槽的基本使用使用&lt;slot&gt;&lt;/slot&gt; --&gt;</span>
+  <span class="hljs-comment">&lt;!-- 子组件 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"cpn"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"left"</span>&gt;</span>左边<span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"center"</span>&gt;</span>中间<span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"right"</span>&gt;</span>右边<span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span>没有具名的插槽<span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>  <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-keyword">const</span> cpn = &#123;</span>
+<span class="actionscript">      template: <span class="hljs-string">"#cpn"</span>,</span>
+      data() &#123;
+<span class="actionscript">        <span class="hljs-keyword">return</span> &#123;</span>
+<span class="actionscript">          message: <span class="hljs-string">"我是子组件"</span></span>
+        &#125;
+      &#125;,
+    &#125;
+<span class="actionscript">    <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">      el: <span class="hljs-string">"#app"</span>,</span>
+      data() &#123;
+<span class="actionscript">        <span class="hljs-keyword">return</span> &#123;</span>
+<span class="actionscript">          message: <span class="hljs-string">"我是父组件消息"</span></span>
+        &#125;
+      &#125;,
+      components: &#123;
+        cpn
+      &#125;,
+    &#125;)
+  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>👩注意👩:  没有具名的插槽排在最后，因为在定义组件的时候，排在了最后，如果有多个按顺序排列。具名插槽按照自定义的顺序排列。</p>
+<p>🔺 定义具名插槽，使用<code>name</code>属性，给插槽定义一个名字。</p>
+<pre><code class="hljs javascript">&lt;!-- 插槽的基本使用使用&lt;slot&gt;&lt;<span class="hljs-regexp">/slot&gt; --&gt;</span>
+<span class="hljs-regexp"> &lt;!-- 子组件模板 --&gt;</span>
+<span class="hljs-regexp"> &lt;template id="cpn"&gt;</span>
+<span class="hljs-regexp">   &lt;div&gt;</span>
+<span class="hljs-regexp">     &lt;slot name="left"&gt;左边&lt;/</span>slot&gt;
+     &lt;slot name=<span class="hljs-string">"center"</span>&gt;中间&lt;<span class="hljs-regexp">/slot&gt;</span>
+<span class="hljs-regexp">     &lt;slot name="right"&gt;右边&lt;/</span>slot&gt;
+     &lt;slot&gt;没有具名的插槽&lt;<span class="hljs-regexp">/slot&gt;</span>
+<span class="hljs-regexp">   &lt;/</span>div&gt;
+ &lt;<span class="hljs-regexp">/template&gt;</span></code></pre>
+<p>🔺 使用具名插槽，在自定义组件标签内使用<code>slot=&quot;left&quot;</code>，插入指定插槽。</p>
+<pre><code class="hljs javascript">&lt;!-- 父组件 --&gt;
+ &lt;div id=<span class="hljs-string">"app"</span>&gt;
+   &lt;cpn&gt;
+     &lt;span&gt;没具名&lt;<span class="hljs-regexp">/span&gt;</span>
+<span class="hljs-regexp">     &lt;span slot="left"&gt;这是左边具名插槽&lt;/</span>span&gt;
+     &lt;!-- 新语法 --&gt;
+     &lt;template v-slot:center&gt;这是中间具名插槽&lt;<span class="hljs-regexp">/template&gt;</span>
+<span class="hljs-regexp">     &lt;!-- 新语法缩写 --&gt;</span>
+<span class="hljs-regexp">     &lt;template #right&gt;这是右边具名插槽&lt;/</span>template&gt;
+   &lt;<span class="hljs-regexp">/cpn&gt;</span>
+<span class="hljs-regexp"> &lt;/</span>div&gt;</code></pre>
+<p>👩注意👩:  此处有是三种写法，获取指定插槽。</p>
 
             </article>
             <hr>
@@ -355,9 +367,9 @@ cmessage:Person<span class="hljs-comment">//限定了cmeessage必须是Person类
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/05/08/vue13/">
+                      <a href="/2020/05/15/vue16/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vue13</span>
+                        <span class="hidden-mobile">vue 笔记整理16</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -365,8 +377,8 @@ cmessage:Person<span class="hljs-comment">//限定了cmeessage必须是Person类
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/05/06/vue11/">
-                        <span class="hidden-mobile">vue 笔记整理11</span>
+                      <a href="/2020/05/08/vue14/">
+                        <span class="hidden-mobile">vue14</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -561,7 +573,7 @@ cmessage:Person<span class="hljs-comment">//限定了cmeessage必须是Person类
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "vue 笔记整理12&nbsp;",
+        "vue15&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

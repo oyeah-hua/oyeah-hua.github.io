@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>vue 笔记整理12 - oyeah</title>
+  <title>vue13 - oyeah</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -134,8 +134,8 @@
               
                 <div class="mt-3 post-meta">
                   <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-05-07 19:17">
-                    星期四, 五月 7日 2020, 7:17 晚上
+                  <time datetime="2020-05-08 20:11">
+                    星期五, 五月 8日 2020, 8:11 晚上
                   </time>
                 </div>
               
@@ -145,7 +145,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    658 字
+                    1.2k 字
                   </span>
                 
 
@@ -155,7 +155,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    9
+                    16
                      分钟
                   </span>
                 
@@ -184,147 +184,184 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="（十二）父组件向子组件传递数据"><a href="#（十二）父组件向子组件传递数据" class="headerlink" title="（十二）父组件向子组件传递数据"></a>（十二）父组件向子组件传递数据</h1><h2 id="🚩-父组件如何向子组件传递数据？"><a href="#🚩-父组件如何向子组件传递数据？" class="headerlink" title="🚩 父组件如何向子组件传递数据？"></a>🚩 父组件如何向子组件传递数据？</h2><p>🔺 使用<code>props</code>属性</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> cpn = &#123;
-  template: <span class="hljs-string">"#cpn"</span>,
-  props: &#123; 
-          cmessage: &#123;
-          type: <span class="hljs-built_in">String</span>,
-          <span class="hljs-keyword">default</span>: <span class="hljs-string">'zzzzz'</span>,
-          required: <span class="hljs-literal">true</span> <span class="hljs-comment">//在使用组件必传值</span>
-          &#125;
-  &#125;
-&#125;</code></pre>
-<p>🔺  向<code>cmessage</code>对象传值</p>
+              <h1 id="（十三）-组件通信"><a href="#（十三）-组件通信" class="headerlink" title="（十三） 组件通信"></a>（十三） 组件通信</h1><p>🔺 在上一个小节中，我们提到了子组件是不能引用父组件或者Vue实例的数据的。但是，在开发中，往往一些数据确实需要从上层传递到下层:比如在一个页面中，我们从服务器请求到了很多的数据。其中一部分数据，并非是我们整个页面的大组件来展示的，而是需要下面的子组件进行展示。这个时候，并不会让子组件再次发送一个网络请求，而是直接让大组件(父组件)将数据传递给小组件(子组件)。</p>
+<p>🔺 如何进行父子组件间的通信呢？<code>Vue</code>官方提到:</p>
+<ul>
+<li>通过<code>props</code>向子组件传递数据</li>
+<li>通过事件向父组件发送消息</li>
+</ul>
+<p>🔺 在下面的代码中，我直接将<code>Vue</code>实例当做父组件，并且其中包含子组件来简化代码。真实的开发中，<code>Vue</code>实例和子组件的通信<strong>和</strong>父组件和子组件的通信过程是一样的。</p>
+<h2 id="🚩-父传子（props的驼峰标识）"><a href="#🚩-父传子（props的驼峰标识）" class="headerlink" title="🚩 父传子（props的驼峰标识）"></a>🚩 父传子（props的驼峰标识）</h2><p>🔺 <code>v-bind</code>是 不支持使用驼峰标识的，例如<code>cUser</code>要改成<code>c-User</code>。</p>
+<p>🔺 在组件中，使用选项<code>props</code>来声明需要从父级接收到的数据。</p>
+<p>🔺 <code>props</code>的值有两种方式：</p>
+<ul>
+<li><p>方式一：字符串数组，数组中的字符串就是传递时的名称。</p>
+</li>
+<li><p>方式二：对象，对象可以设置传递时的类型，也可以设置默认值等。</p>
+</li>
+</ul>
+<p>🔺 我们先来看一个最简单的<code>props</code>传递：</p>
 <pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">cpn</span> <span class="hljs-attr">:cMessage</span>=<span class="hljs-string">"message"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>    
-<span class="actionscript"><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">      el: <span class="hljs-string">"#app"</span>,</span>
-      data: &#123;
-<span class="actionscript">        message: <span class="hljs-string">"你好"</span>,</span>
-<span class="actionscript">        movies: [<span class="hljs-string">"复仇者联盟"</span>, <span class="hljs-string">"钢铁侠"</span>, <span class="hljs-string">"星际穿越"</span>, <span class="hljs-string">"哪吒传奇"</span>]</span>
-      &#125;,
-      components: &#123;
-        cpn
-      &#125;
-    &#125;)
-  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-<h2 id="🚩-props属性使用"><a href="#🚩-props属性使用" class="headerlink" title="🚩  props属性使用"></a>🚩  props属性使用</h2><p>🔺 数组写法</p>
-<pre><code class="hljs javascript">props: [<span class="hljs-string">'cmovies'</span>, <span class="hljs-string">'cmessage'</span>]</code></pre>
-<p>🔺 对象写法</p>
-<pre><code class="hljs javascript">props: &#123; 
-         cmessage: &#123;
-         type: <span class="hljs-built_in">String</span>,
-         <span class="hljs-keyword">default</span>: <span class="hljs-string">'zzzzz'</span>,
-         required: <span class="hljs-literal">true</span> <span class="hljs-comment">//在使用组件必传值</span>
-         &#125;
- &#125;</code></pre>
-<p>🔺 <code>props</code>属性的类型限制</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">//1.类型限制(多个类使用数组)</span>
-cmovies:<span class="hljs-built_in">Array</span>,<span class="hljs-comment">//限制为数组类型</span>
-cmessage:<span class="hljs-built_in">String</span>,<span class="hljs-comment">//限制为Strin类型</span>
-cmessage:[<span class="hljs-string">'String'</span>,<span class="hljs-string">'Number'</span>]<span class="hljs-comment">//限制为String或Number类型</span></code></pre>
-<p>🔺  <code>props</code>属性的默认值</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">//2.提供一些默认值，以及必传值</span>
-        cmessage: &#123;
-          type: <span class="hljs-built_in">String</span>,
-          <span class="hljs-keyword">default</span>: <span class="hljs-string">'zzzzz'</span>,<span class="hljs-comment">//默认值</span>
-        &#125;</code></pre>
-<p>🔺  <code>props</code>属性的必传值</p>
-<pre><code class="hljs javascript">cmessage: &#123;
-          type: <span class="hljs-built_in">String</span>,
-          <span class="hljs-keyword">default</span>: <span class="hljs-string">'zzzzz'</span>,
-          required: <span class="hljs-literal">true</span> <span class="hljs-comment">//在使用组件必传值</span>
-        &#125;</code></pre>
-<p>🔺 类型是<code>Object/Array</code>，默认值必须是一个函数</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">//类型是Object/Array，默认值必须是一个函数</span>
-cmovies: &#123;
-	type: <span class="hljs-built_in">Array</span>,
-	<span class="hljs-keyword">default</span> () &#123;
-		<span class="hljs-keyword">return</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]
-	&#125;
-&#125;,</code></pre>
-<p>🔺  自定义验证函数</p>
-<pre><code class="hljs javascript">vaildator: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) </span>&#123;
-	<span class="hljs-comment">//这个传递的值必须匹配下列字符串中的一个</span>
-	<span class="hljs-keyword">return</span> [<span class="hljs-string">'zzzzz'</span>, <span class="hljs-string">'ttttt'</span>, <span class="hljs-string">'yyy'</span>].indexOf(value) !== <span class="hljs-number">-1</span>
-&#125;</code></pre>
-<p>🔺 自定义类型</p>
-<pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">firstName,lastName</span>) </span>&#123;
-     <span class="hljs-keyword">this</span>.firstName = firstName
-     <span class="hljs-keyword">this</span>.lastName = lastName
-   &#125;
-cmessage:Person<span class="hljs-comment">//限定了cmeessage必须是Person类型</span></code></pre>
-<p> 🔺  综合使用</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">cpn</span> <span class="hljs-attr">:cMovies</span>=<span class="hljs-string">"movies"</span> <span class="hljs-attr">:cMessage</span>=<span class="hljs-string">"message"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- v-bind不支持驼峰 :cUser改成 :c-User--&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;cpn :cUser="user"&gt;&lt;/cpn&gt; --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn</span> <span class="hljs-attr">:c-User</span>=<span class="hljs-string">"user"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn</span> <span class="hljs-attr">:cuser</span>=<span class="hljs-string">"user"</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"cpn"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(item, index) in cmovies"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;cmessage&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- 使用驼峰 --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;cUser&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- 不使用 --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>&#123;&#123;cuser&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
   <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span><span class="hljs-params">(firstName,lastName)</span> </span>&#123;</span>
-<span class="actionscript">      <span class="hljs-keyword">this</span>.firstName = firstName</span>
-<span class="actionscript">      <span class="hljs-keyword">this</span>.lastName = lastName</span>
-    &#125;
 <span class="actionscript">    <span class="hljs-comment">// 父传子：props</span></span>
 <span class="actionscript">    <span class="hljs-keyword">const</span> cpn = &#123;</span>
 <span class="actionscript">      template: <span class="hljs-string">"#cpn"</span>,</span>
-<span class="actionscript">      <span class="hljs-comment">// props: ['cmovies', 'cmessage'],//数组写法</span></span>
 <span class="actionscript">      props: &#123; <span class="hljs-comment">//对象写法</span></span>
-<span class="actionscript">        <span class="hljs-comment">// 1.类型限制(多个类使用数组)</span></span>
-<span class="actionscript">        <span class="hljs-comment">// cmovies:Array,</span></span>
-<span class="actionscript">        <span class="hljs-comment">// cmessage:String,</span></span>
-<span class="actionscript">        <span class="hljs-comment">// cmessage:['String','Number'],</span></span>
-<span class="actionscript">        <span class="hljs-comment">// 2.提供一些默认值，以及必传值</span></span>
-        cmessage: &#123;
-<span class="javascript">          type: <span class="hljs-built_in">String</span>,</span>
-<span class="actionscript">          <span class="hljs-keyword">default</span>: <span class="hljs-string">'zzzzz'</span>,</span>
-<span class="actionscript">          required: <span class="hljs-literal">true</span> <span class="hljs-comment">//在使用组件必传值</span></span>
-        &#125;,
-<span class="actionscript">        <span class="hljs-comment">//类型是Object/Array，默认值必须是一个函数</span></span>
-        cmovies: &#123;
-<span class="javascript">          type: <span class="hljs-built_in">Array</span>,</span>
-<span class="actionscript">          <span class="hljs-keyword">default</span> () &#123;</span>
-<span class="actionscript">            <span class="hljs-keyword">return</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]</span>
-          &#125;
-        &#125;,
-<span class="actionscript">        <span class="hljs-comment">// 3.自定义验证函数</span></span>
-<span class="actionscript">        <span class="hljs-comment">// vaildator: function (value) &#123;</span></span>
-<span class="actionscript">        <span class="hljs-comment">//   //这个传递的值必须匹配下列字符串中的一个</span></span>
-<span class="actionscript">        <span class="hljs-comment">//   return ['zzzzz', 'ttttt', 'yyy'].indexOf(value) !== -1</span></span>
-<span class="actionscript">        <span class="hljs-comment">// &#125;</span></span>
-<span class="actionscript">        <span class="hljs-comment">// 4.自定义类型</span></span>
-<span class="actionscript">        <span class="hljs-comment">// cmessage:Person,</span></span>
+<span class="actionscript">        <span class="hljs-comment">//驼峰</span></span>
+<span class="javascript">        cUser:<span class="hljs-built_in">Object</span>,</span>
+<span class="actionscript">        <span class="hljs-comment">//未使用驼峰</span></span>
+<span class="javascript">        cuser:<span class="hljs-built_in">Object</span></span>
       &#125;,
-      data() &#123;
-<span class="actionscript">        <span class="hljs-keyword">return</span> &#123;</span>
-        &#125;
-      &#125;,
-      methods: &#123;
-
-      &#125;,
+<span class="actionscript">      data() &#123;<span class="hljs-keyword">return</span> &#123;&#125;&#125;,</span>
+      methods: &#123;&#125;,
     &#125;;
 <span class="actionscript">    <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
 <span class="actionscript">      el: <span class="hljs-string">"#app"</span>,</span>
       data: &#123;
-<span class="actionscript">        message: <span class="hljs-string">"你好"</span>,</span>
-<span class="actionscript">        movies: [<span class="hljs-string">"复仇者联盟"</span>, <span class="hljs-string">"钢铁侠"</span>, <span class="hljs-string">"星际穿越"</span>, <span class="hljs-string">"哪吒传奇"</span>]</span>
+        user:&#123;
+<span class="actionscript">          name:<span class="hljs-string">'zzz'</span>,</span>
+          age:18,
+          height:175
+        &#125;
       &#125;,
       components: &#123;
         cpn
       &#125;
     &#125;)
   <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p> 👩注意👩:   </p>
+<p> 🔺 在前面，我们的props选项是使用一个数组。我们说过，除了数组之外，我们也可以使用对象，当需要对props进行类型等验证时，就需要对象写法了。</p>
+<p>🔺 验证都支持哪些数据类型呢？</p>
+<ul>
+<li><p>String</p>
+</li>
+<li><p>Number</p>
+</li>
+<li><p>Boolean</p>
+</li>
+<li><p>Array</p>
+</li>
+<li><p>Object</p>
+</li>
+<li><p>Date</p>
+</li>
+<li><p>Function</p>
+</li>
+<li><p>Symbol</p>
+</li>
+</ul>
+<p>🔺 当我们有自定义构造函数时，验证也支持自定义的类型。</p>
+<h2 id="🚩-子传父-emit"><a href="#🚩-子传父-emit" class="headerlink" title="🚩 子传父$emit"></a>🚩 子传父<code>$emit</code></h2><p>🔺 <code>props</code>用于父组件向子组件传递数据，还有一种比较常见的是子组件传递数据或事件到父组件中。我们应该如何处理呢？这个时候，我们需要使用<strong>自定义事件</strong>来完成。什么时候需要自定义事件呢？</p>
+<p>🔺 当子组件需要向父组件传递数据时，就要用到自定义事件了。我们之前学习的<code>v-on</code>不仅仅可以用于监听DOM事件，也可以用于组件间的自定义事件。</p>
+<p>🔺 自定义事件的流程：</p>
+<ul>
+<li><p>在子组件中，通过<code>$emit()</code>来触发事件。</p>
+</li>
+<li><p>在父组件中，通过<code>v-on</code>来监听子组件事件。</p>
+</li>
+</ul>
+<p>🔺 子组件向父组件传值，使用自定义事件<code>$emit</code>。</p>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 父组件 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 不写参数默认传递btnClick的item --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cpn</span> @<span class="hljs-attr">itemclick</span>=<span class="hljs-string">"cpnClcik"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- 子组件 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"cpn"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(item, index) in categoties"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"btnClick(item)"</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-comment">// 父传子：props</span></span>
+<span class="actionscript">    <span class="hljs-keyword">const</span> cpn = &#123;</span>
+<span class="actionscript">      template: <span class="hljs-string">"#cpn"</span>,</span>
+      data() &#123;
+<span class="actionscript">        <span class="hljs-keyword">return</span> &#123;</span>
+          categoties: [&#123;
+<span class="actionscript">              id: <span class="hljs-string">'aaa'</span>,</span>
+<span class="actionscript">              name: <span class="hljs-string">'热门推荐'</span></span>
+            &#125;,
+            &#123;
+<span class="actionscript">              id: <span class="hljs-string">'bbb'</span>,</span>
+<span class="actionscript">              name: <span class="hljs-string">'手机数码'</span></span>
+            &#125;,
+            &#123;
+<span class="actionscript">              id: <span class="hljs-string">'ccc'</span>,</span>
+<span class="actionscript">              name: <span class="hljs-string">'家用家电'</span></span>
+            &#125;,
+            &#123;
+<span class="actionscript">              id: <span class="hljs-string">'ddd'</span>,</span>
+<span class="actionscript">              name: <span class="hljs-string">'电脑办公'</span></span>
+            &#125;,
+          ]
+        &#125;
+      &#125;,
+      methods: &#123;
+        btnClick(item) &#123;
+<span class="actionscript">          <span class="hljs-keyword">this</span>.$emit(<span class="hljs-string">'itemclick'</span>, item)</span>
+        &#125;
+      &#125;,
+    &#125;;
+<span class="actionscript">    <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">      el: <span class="hljs-string">"#app"</span>,</span>
+      data() &#123;
+<span class="actionscript">        <span class="hljs-keyword">return</span> &#123;</span>
+
+        &#125;
+      &#125;,
+      methods: &#123;
+        cpnClcik(item) &#123;
+<span class="javascript">          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'cpnClick'</span>+item.name);</span>
+        &#125;
+      &#125;,
+      components: &#123;
+        cpn
+      &#125;,
+    &#125;)
+  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>1.在子组件中定义一个方法<code>btnClick(item)</code>，使用<code>$emit</code>，<code>&#39;itemclick&#39;</code>是事件名，<code>item</code>是传过去的值。</p>
+<pre><code class="hljs javascript">methods: &#123;
+       btnClick(item) &#123;
+         <span class="hljs-keyword">this</span>.$emit(<span class="hljs-string">'itemclick'</span>, item)
+       &#125;
+     &#125;,</code></pre>
+<p>2.在子组件中监听点击事件并回调此方法</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(item, index) in categoties"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"btnClick(item)"</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<p>3.在父组件中定义一个方法<code>cpnClcik(item)</code></p>
+<pre><code class="hljs javascript">methods: &#123;
+
+ cpnClcik(item) &#123;
+
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'cpnClick'</span>+item.name);
+
+ &#125;
+
+&#125;,</code></pre>
+<p>4.并在父组件（<code>vue</code>实例）中调用<code>&lt;cpn @itemclick=&quot;cpnClcik&quot;&gt;&lt;/cpn&gt;</code>（不写参数默认传递<code>btnClick</code>的<code>item</code> ），父组件监听事件名为<code>itemclick</code>的子组件传过来的事件。</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">cpn</span> @<span class="hljs-attr">itemclick</span>=<span class="hljs-string">"cpnClcik"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">cpn</span>&gt;</span></code></pre>
 
             </article>
             <hr>
@@ -355,9 +392,9 @@ cmessage:Person<span class="hljs-comment">//限定了cmeessage必须是Person类
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/05/08/vue13/">
+                      <a href="/2020/05/08/vue14/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vue13</span>
+                        <span class="hidden-mobile">vue14</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -365,8 +402,8 @@ cmessage:Person<span class="hljs-comment">//限定了cmeessage必须是Person类
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/05/06/vue11/">
-                        <span class="hidden-mobile">vue 笔记整理11</span>
+                      <a href="/2020/05/07/vue12/">
+                        <span class="hidden-mobile">vue 笔记整理12</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -561,7 +598,7 @@ cmessage:Person<span class="hljs-comment">//限定了cmeessage必须是Person类
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "vue 笔记整理12&nbsp;",
+        "vue13&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
